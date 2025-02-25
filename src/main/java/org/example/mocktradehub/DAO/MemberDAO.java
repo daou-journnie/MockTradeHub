@@ -24,4 +24,19 @@ public class MemberDAO {
     }
 
 
+    public int insertMember(Member member) {
+        SqlSession session = sqlSessionFactory.openSession();
+        int result = 0;
+        try {
+            result = session.insert("MemberMapper.insertMember", member);
+            session.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
+
 }
