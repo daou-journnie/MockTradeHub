@@ -7,7 +7,7 @@
 </head>
 <body>
 <form action="login" method="post">
-    <label>Email: <input type="text" name="email" /></label><br/>
+    <label>ID: <input type="text" name="id" /></label><br/>
     <label>Password: <input type="password" name="password" /></label><br/>
     <input type="submit" value="Login" />
 </form>
