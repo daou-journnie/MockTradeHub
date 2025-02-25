@@ -23,6 +23,8 @@ public class MemberRegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
+        request.setCharacterEncoding("UTF-8");
+
         // 폼 파라미터 가져오기
         String id = request.getParameter("id");
         String password = request.getParameter("password");
