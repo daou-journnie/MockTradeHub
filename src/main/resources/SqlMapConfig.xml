@@ -19,6 +19,8 @@
 
     <!--  TypeAlias  -->
     <typeAliases>
+        <typeAlias alias="Member" type="org.example.mocktradehub.model.Member" />
+
     </typeAliases>
     
     <!--  DB 연결 정보  -->
@@ -36,6 +38,8 @@
 
     <!--  SQL 구문 작성하는 mapper 파일 경로 지정  -->
     <mappers>
+        <mapper resource="org/example/mocktradehub/mapper/MemberMapper.xml"/>
+
     </mappers>
 
 </configuration>
