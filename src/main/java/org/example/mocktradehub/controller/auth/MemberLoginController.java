@@ -18,7 +18,7 @@ public class MemberLoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
 
@@ -30,7 +30,7 @@ public class MemberLoginController extends HttpServlet {
             response.sendRedirect("welcome.jsp");
         } else {
             request.setAttribute("error", "로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
-            response.sendRedirect("login.jsp");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
     }
