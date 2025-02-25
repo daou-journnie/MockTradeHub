@@ -38,7 +38,7 @@
 
     <!--  SQL 구문 작성하는 mapper 파일 경로 지정  -->
     <mappers>
-        <mapper resource=".sqlMapper/Member.xml"/>
+        <mapper resource="./sqlMapper/Member.xml"/>
 
     </mappers>
 
