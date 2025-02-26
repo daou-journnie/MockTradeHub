@@ -51,6 +51,12 @@
           <version>${junit.version}</version>
           <scope>test</scope>
         </dependency>
+          <!-- JSTL 추가 -->
+          <dependency>
+              <groupId>javax.servlet</groupId>
+              <artifactId>jstl</artifactId>
+              <version>1.2</version>
+          </dependency>
   </dependencies>
 
   <build>
