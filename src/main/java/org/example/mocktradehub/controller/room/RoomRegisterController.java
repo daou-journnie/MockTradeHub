@@ -31,10 +31,19 @@ public class RoomRegisterController extends HttpServlet {
         int roomMaxMembers = Integer.parseInt(request.getParameter("roomMaxMembers"));
         String roomStartDateStr = request.getParameter("roomStartDate");
         String roomEndDateStr = request.getParameter("roomEndDate");
-        int roomInitialSeed = Integer.parseInt(request.getParameter("roomInitialSeed"));
-        String roomCode = request.getParameter("roomCode");
+        int roomInitialSeed = Integer.parseInt(request.getParameter("roomInitialSeed")+"0000");
         String roomDescription = request.getParameter("roomDescription");
         String roomCreatedBy = request.getParameter("roomCreatedBy");
+
+        System.out.println("roomName: " + roomName);
+        System.out.println("roomIsPublic: " + roomIsPublic);
+        System.out.println("roomMaxMembers: " + roomMaxMembers);
+        System.out.println("roomStartDate: " + roomStartDateStr);
+        System.out.println("roomEndDate: " + roomEndDateStr);
+        System.out.println("roomInitialSeed: " + roomInitialSeed);
+        System.out.println("roomDescription: " + roomDescription);
+        System.out.println("roomCreatedBy: " + roomCreatedBy);
+
 
         // 날짜 파싱 (yyyy-MM-dd 형식)
         Date roomStartDate = null;
@@ -59,17 +68,20 @@ public class RoomRegisterController extends HttpServlet {
         room.setRoomStartDate(roomStartDate);
         room.setRoomEndDate(roomEndDate);
         room.setRoomInitialSeed(roomInitialSeed);
-        room.setRoomCode(roomCode);
         room.setRoomDescription(roomDescription);
         room.setRoomCreatedBy(roomCreatedBy);
 
         // 서비스 호출: RoomService가 방 상태를 계산하고, 방을 생성함
-        boolean isCreated = roomService.createRoom(room);
+        int roomId = roomService.createRoom(room);
+        boolean isCreated = roomId > 0;
+
         if (isCreated) {
-            response.sendRedirect("roomList.jsp");
+            // 생성된 방의 상세 페이지로 이동: 예시 URL: /room/dashboard?roomId=XXX
+            response.sendRedirect(request.getContextPath() + "/room/dashboard?roomId=" + roomId);
         } else {
             request.setAttribute("error", "방 생성에 실패했습니다.");
-            request.getRequestDispatcher("/roomRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/roomRegister").forward(request, response);
         }
+
     }
 }

@@ -29,11 +29,7 @@
     </label><br/>
 
     <label>초기 자금:
-        <input type="number" name="roomInitialSeed" required />
-    </label><br/>
-
-    <label>방 코드:
-        <input type="text" name="roomCode" required />
+        <input type="number" name="roomInitialSeed" required /> 만원
     </label><br/>
 
     <label>방 설명:

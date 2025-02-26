@@ -14,15 +14,15 @@ public class RoomDAO {
     // 방 생성
     public int insertRoom(Room room) {
         SqlSession session = sqlSessionFactory.openSession();
-        int result = 0;
+        int new_room_id = 0;
         try {
-            result = session.insert("RoomMapper.insertRoom", room);
+            new_room_id = session.insert("RoomMapper.insertRoom", room);
             session.commit();
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return result;
+        return new_room_id;
     }
 }

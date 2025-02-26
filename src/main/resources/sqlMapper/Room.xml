@@ -15,5 +15,8 @@
                    #{roomInitialSeed}, #{roomMaxMembers}, #{roomCreatedBy}, #{roomStartDate}, #{roomEndDate},
                    SYSTIMESTAMP
                )
+        <selectKey keyProperty="roomId" resultType="int" order="AFTER">
+            SELECT ROOMS_SEQ.CURRVAL FROM dual
+        </selectKey>
     </insert>
 </mapper>
