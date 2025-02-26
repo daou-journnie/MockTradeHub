@@ -1,0 +1,64 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #E6EFF5;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: #343C6A;
+}
+
+div#tableTitle h1 {
+    font-size: 24px;
+    color: #343C6A;
+    padding-left: 5%;
+}
+
+div#stockTable {
+    width: 80%;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    margin: 0 auto; /* div가 화면 중앙에 오도록 */
+    padding: 20px; /* div 내부 여백 추가 */
+}
+
+a {
+    text-decoration: none;
+    color: #343C6A;
+}
+
+table {
+    width: 100%; /* table을 div의 너비에 맞게 꽉 차게 설정 */
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    text-align: right;
+    padding: 8px;
+}
+
+th.stockTitle, td.stockTitle {
+    text-align: left;
+    font-weight: bold;
+}
+
+th {
+    color: #718EBF; /* 열 이름 글자색 */
+}
+
+tr {
+    border-bottom: 1px solid #E6EFF5; /* 행의 아래에만 border */
+}
+
+td {
+    color: #333;
+}
+
+.negative {
+    color: #1976D2;
+}
+
+.positive {
+    color: #D32F2F;
+}
