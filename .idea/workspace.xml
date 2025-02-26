@@ -9,12 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="mybatis setting 수정">
+    <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="register 기능 생성">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/MemberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/auth/MemberLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/auth/MemberLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlMapper/Member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlMapper/Member.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/RoomDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlMapper/Room.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlMapper/Room.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/roomRegister.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/roomRegister.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="auth-login-mybatissetting" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,20 +54,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="auth-login-controller" />
-                    <option name="lastUsedInstant" value="1740464125" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="auth-login-mybatissetting" />
-                    <option name="lastUsedInstant" value="1740464118" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="auth-login-model" />
-                    <option name="lastUsedInstant" value="1740464064" />
+                    <option name="branchName" value="room" />
+                    <option name="lastUsedInstant" value="1740471683" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1740442211" />
+                    <option name="lastUsedInstant" value="1740471641" />
                   </RecentBranch>
                 </list>
               </option>
@@ -81,6 +74,16 @@
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/daou-journnie/MockTradeHub.git&quot;,
     &quot;accountId&quot;: &quot;f1b2f902-3809-415e-8511-d9fa0c7d55ed&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;daou-journnie&quot;,
+    &quot;repository&quot;: &quot;MockTradeHub&quot;
   }
 }</component>
   <component name="LogFilters">
@@ -111,34 +114,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;Tomcat 서버.Tomcat 9.0.99.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;auth-login&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/java/MockTradeHub&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;아티팩트&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Tomcat 서버.Tomcat 9.0.99.executor": "Run",
+    "git-widget-placeholder": "room",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/java/MockTradeHub",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "아티팩트",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\java\MockTradeHub\src\main\resources" />
@@ -211,7 +214,7 @@
       <workItem from="1740382898232" duration="574000" />
       <workItem from="1740383499358" duration="141000" />
       <workItem from="1740449130230" duration="330000" />
-      <workItem from="1740467064800" duration="2350000" />
+      <workItem from="1740467064800" duration="12029000" />
     </task>
     <task id="LOCAL-00001" summary="Project 생성">
       <option name="closed" value="true" />
@@ -245,7 +248,31 @@
       <option name="project" value="LOCAL" />
       <updated>1740467475624</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="register 기능 생성">
+      <option name="closed" value="true" />
+      <created>1740470129437</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740470129437</updated>
+    </task>
+    <task id="LOCAL-00006" summary="register 한글 인코딩">
+      <option name="closed" value="true" />
+      <created>1740470534990</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740470534990</updated>
+    </task>
+    <task id="LOCAL-00007" summary="room register 생성">
+      <option name="closed" value="true" />
+      <created>1740473235314</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740473235314</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +293,9 @@
     <MESSAGE value="Project 생성" />
     <MESSAGE value="mybatis setting" />
     <MESSAGE value="login 기능 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="login 기능 생성" />
+    <MESSAGE value="register 기능 생성" />
+    <MESSAGE value="register 한글 인코딩" />
+    <MESSAGE value="room register 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="room register 생성" />
   </component>
 </project>
