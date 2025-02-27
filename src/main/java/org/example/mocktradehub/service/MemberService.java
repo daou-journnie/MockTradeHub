@@ -13,6 +13,10 @@ public class MemberService {
         this.memberDAO = new MemberDAO(factory);
     }
 
+    public Member getMemberById(String id) {
+        return memberDAO.getMemberById(id);
+    }
+
     public boolean login(String id, String pw) {
         System.out.println("Service : " + id + " : " + pw);
         try {
