@@ -33,7 +33,6 @@ public class PostService {
         String stockName = stockDAO.getStockNameByCode(order.getStockCode());
         // 주문 정보를 기반으로 포스트 내용을 생성
         String orderTypeKorean = order.getOrderType().equalsIgnoreCase("BUY") ? "구매" : "판매";
-        String memberNickname = memberService.getMemberById(order.getRoomMemberId()).getMemberNickname();
 
         String postContent = String.format("{%s} {%d}주 {%s}\n1주당 {%s}원",
                 stockName,
@@ -44,7 +43,6 @@ public class PostService {
         post.setPostContent(postContent);
         post.setMemberId(order.getRoomMemberId());
         post.setRoomId(order.getRoomID());
-        post.setMemberNickname(memberNickname);
         int result = postDAO.insertPost(post);
         return result > 0;
     }
@@ -52,6 +50,12 @@ public class PostService {
 
     // 특정 방의 포스트 리스트 조회
     public List<Post> getPostsByRoomId(int roomId) {
-        return postDAO.getPostsByRoomId(roomId);
+        List<Post> posts = postDAO.getPostsByRoomId(roomId);
+        for(Post post : posts) {
+            String memberNickname = memberService.getMemberById(post.getMemberId()).getMemberNickname();
+            post.setMemberNickname(memberNickname);
+        }
+
+        return posts;
     }
 }
