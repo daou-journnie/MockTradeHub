@@ -3,24 +3,6 @@ var socket = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0
 
 socket.onopen = function() {
     console.log("WebSocket 연결 성공");
-    var approvalKey;
-    // fetch("https://openapi.koreainvestment.com:9443/oauth2/Approval", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         grant_type: "client_credentials",
-    //         appkey: "PSuwJL9kdx9siKdlwqldljLcbj107pZkqiK8",
-    //         secretkey: "xgC7N6L8eFwhCaiBhW4BQv1yGZQpOemJ39kppnouErNgTJ9LHuK0tMY1aa0BtG11GEmpgJMMs7HoeWOxahFoupdfitrFzC69D+5H+O0JIJlc5hBJ4rk32PIl4MxMc9EKnB+7DYobJADUlElBa2RwC3o3YD0PaveryHjttbd9eMYNx0LMiuQ="
-    //     }),
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     }
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         approvalKey = data.approvalKey;
-    //         console.log("Approval Key:", approvalKey);  // 결과 출력
-    //     })
-    //     .catch(error => console.error("Error:", error));
 
     // 승인키와 종목 코드 배열 설정
 
@@ -153,3 +135,35 @@ socket.onclose = function() {
 socket.onerror = function(error) {
     console.log("WebSocket 오류: " + error.message);
 };
+
+function sendStockDetail(stockId) {
+    const stockTitle = $("#" + stockId + " .stockTitle").text();
+    const price = document.getElementById(`price-${stockId}`).innerText.trim();
+    const prdy = document.getElementById(`prdy-${stockId}`).innerText.trim();
+    const vol = document.getElementById(`vol-${stockId}`).innerText.trim();
+
+    // 동적으로 form 생성
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "stockDetail";  // 서블릿 매핑 경로
+
+    // 입력 필드 추가
+    const addHiddenInput = (name, value) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    };
+
+    addHiddenInput("stockId", stockId);
+    addHiddenInput("stockTitle", stockTitle);
+    addHiddenInput("price", price);
+    addHiddenInput("prdy", prdy);
+    addHiddenInput("vol", vol);
+    addHiddenInput("approvalKey", approvalKey);
+
+    // body에 form 추가 후 submit
+    document.body.appendChild(form);
+    form.submit();
+}

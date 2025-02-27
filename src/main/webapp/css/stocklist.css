@@ -22,11 +22,6 @@ div#stockTable {
     padding: 20px; /* div 내부 여백 추가 */
 }
 
-a {
-    text-decoration: none;
-    color: #343C6A;
-}
-
 table {
     width: 100%; /* table을 div의 너비에 맞게 꽉 차게 설정 */
     border-collapse: collapse;
