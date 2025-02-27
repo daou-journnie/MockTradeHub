@@ -1,3 +1,5 @@
+
+
 .dashboard {
     display: flex;
     align-items: flex-start;
@@ -52,7 +54,7 @@
         max-width: 100%;
     }
 }
-.tweet-card {
+.post-card {
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -67,14 +69,14 @@
     object-fit: contain;
     width: 56px;
 }
-.tweet-content {
+.post-content {
     display: flex;
     min-width: 240px;
     flex-direction: column;
     flex-grow: 1;
     width: 518px;
 }
-.tweet-header {
+.post-header {
     display: flex;
     width: fit-content;
     align-items: flex-start;
@@ -98,7 +100,7 @@
 .timestamp {
     font-size: 16px;
 }
-.tweet-body {
+.post-body {
     display: flex;
     margin-top: 10px;
     width: 100%;
@@ -128,11 +130,11 @@
     align-items: center;
     gap: 10px;
 }
-.tweet-text {
+.post-text {
     font-size: 20px;
     letter-spacing: -0.2px;
 }
-.tweet-actions {
+.post-actions {
     display: flex;
     margin-top: 10px;
     align-items: flex-start;
@@ -162,17 +164,17 @@
     border: 0;
 }
 @media (max-width: 991px) {
-    .tweet-content,
-    .tweet-header,
-    .tweet-body,
+    .post-content,
+    .post-header,
+    .post-body,
     .stock-info,
     .stock-transaction,
-    .tweet-text {
+    .post-text {
         max-width: 100%;
     }
     .user-info,
     .stock-details,
-    .tweet-actions,
+    .post-actions,
     .action-item {
         white-space: initial;
     }
