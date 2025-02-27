@@ -1,19 +1,10 @@
+var highestPrice = 0;
+
 // WebSocket 연결
 var socket = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0");
 
 socket.onopen = function() {
-    console.log("WebSocket 연결 성공");
-
-    // 승인키와 종목 코드 배열 설정
-
-    var stockCodes = [
-        "005930", "000660", "010140", "042660", "064350",
-        "012450", "035720", "047050", "005380", "023590"
-    ];
-
-    // 각 종목에 대해 WebSocket 메시지 전송
-    stockCodes.forEach(function(stockCode) {
-        var requestMessage = JSON.stringify({
+    var requestMessage = JSON.stringify({
             header: {
                 approval_key: approvalKey,
                 custtype: "P",
@@ -29,7 +20,6 @@ socket.onopen = function() {
         });
         socket.send(requestMessage);
         console.log("요청 메시지 전송: " + requestMessage);
-    });
 };
 
 socket.onmessage = function(event) {
@@ -102,15 +92,17 @@ socket.onmessage = function(event) {
             var prdyVrss = parseFloat(stockData["PRDY_VRSS"]);
             var prdyCtrt = stockData["PRDY_CTRT"];
             var sign = stockData["PRDY_VRSS_SIGN"];
-            var accumulatedVolume = parseFloat(stockData["ACML_VOL"]);
+            highestPrice = parseFloat(stockData["STCK_HGPR"]);
 
             if (stockCode && currentPrice && prdyCtrt) {
                 console.log("종목코드: " + stockCode + " 현재가: " + currentPrice);
                 // 실시간 가격 업데이트
                 var priceElement = document.getElementById("price-" + stockCode);
                 var prdyElement = document.getElementById("prdy-" + stockCode);
-                var volElement = document.getElementById("vol-" + stockCode);
                 var prdyText = prdyVrss.toLocaleString() + "원 (" + prdyCtrt + "%)";
+                var amount = parseFloat(document.getElementById("buyingAmount").value);
+                var expectedTotal = document.getElementById("expectedTotal");
+
                 if (sign == 1 || sign == 2) {
                     prdyElement.classList.add("positive");
                     prdyText = "+" + prdyText;
@@ -119,14 +111,15 @@ socket.onmessage = function(event) {
                 }
                 priceElement.innerText = currentPrice.toLocaleString() + "원";
                 prdyElement.innerText = prdyText;
-                volElement.innerText = accumulatedVolume.toLocaleString();
+                var total = amount * highestPrice;
+                expectedTotal.innerText = "최대 " + total.toLocaleString() + "원"
 
-                }
-            } else {
-                console.log("데이터 파싱 실패: " + message);
             }
+        } else {
+            console.log("데이터 파싱 실패: " + message);
         }
-    };
+    }
+};
 
 socket.onclose = function() {
     console.log("WebSocket 연결 종료");
@@ -136,34 +129,8 @@ socket.onerror = function(error) {
     console.log("WebSocket 오류: " + error.message);
 };
 
-function sendStockDetail(stockId) {
-    const stockTitle = $("#" + stockId + " .stockTitle").text();
-    const price = document.getElementById(`price-${stockId}`).innerText.trim();
-    const prdy = document.getElementById(`prdy-${stockId}`).innerText.trim();
-    const vol = document.getElementById(`vol-${stockId}`).innerText.trim();
-
-    // 동적으로 form 생성
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = "stockDetail";  // 서블릿 매핑 경로
-
-    // 입력 필드 추가
-    const addHiddenInput = (name, value) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-    };
-
-    addHiddenInput("stockId", stockId);
-    addHiddenInput("stockTitle", stockTitle);
-    addHiddenInput("price", price);
-    addHiddenInput("prdy", prdy);
-    addHiddenInput("vol", vol);
-    addHiddenInput("approvalKey", approvalKey);
-
-    // body에 form 추가 후 submit
-    document.body.appendChild(form);
-    form.submit();
-}
+$("#buyingAmount").on("input", function() {
+    var amount = parseFloat($(this).val());
+    var total = amount * highestPrice;
+    document.getElementById("expectedTotal").innerText = "최대 " + total.toLocaleString() + "원"
+});
