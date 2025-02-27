@@ -1,19 +1,23 @@
 package org.example.mocktradehub.service;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.DAO.RoomDAO;
 import org.example.mocktradehub.model.Room;
+import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.CodeGenerator;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
 
 import java.util.Date;
+import java.util.List;
 
 public class RoomService {
+    private SqlSessionFactory sqlSessionFactory;
     private RoomDAO roomDAO;
 
     public RoomService() {
-        SqlSessionFactory factory = MyBatisSessionFactory.getSqlSessionFactory();
-        this.roomDAO = new RoomDAO(factory);
+        this.sqlSessionFactory = MyBatisSessionFactory.getSqlSessionFactory();
+        this.roomDAO = new RoomDAO();
     }
 
     public int createRoom(Room room) {
@@ -41,5 +45,27 @@ public class RoomService {
             return room.getRoomId();
         }
         return -1;  // 실패 시 음수나 예외 처리
+    }
+
+
+    public List<RoomMember> getMyRooms(String member_id) {
+        System.out.println("service getMyRooms");
+        SqlSession sqlSession = this.sqlSessionFactory.openSession();
+        this.roomDAO.setSqlSession(sqlSession);
+        List<RoomMember> rooms = null;
+        try {
+            System.out.println("service getMyRooms try");
+            rooms = this.roomDAO.getMyRooms(member_id);
+            if (rooms != null) {
+                return rooms;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return rooms;
+
+
     }
 }

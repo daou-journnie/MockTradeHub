@@ -21,7 +21,7 @@
     <typeAliases>
         <typeAlias alias="Member" type="org.example.mocktradehub.model.Member" />
         <typeAlias alias="Room" type="org.example.mocktradehub.model.Room" />
-
+        <typeAlias alias="RoomMember" type="org.example.mocktradehub.model.RoomMember" />
     </typeAliases>
     
     <!--  DB 연결 정보  -->
