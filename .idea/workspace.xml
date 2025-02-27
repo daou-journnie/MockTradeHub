@@ -11,12 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="order  로직에 관련된 코드,.,">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/auth/MemberLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/auth/MemberLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/roomDashboardView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/roomDashboardView.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="roomDashboard-posts" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +52,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="roomDashboard-posts-crycry" />
+                    <option name="lastUsedInstant" value="1740646636" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="room" />
                     <option name="lastUsedInstant" value="1740471683" />
@@ -126,7 +125,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Tomcat 서버.Tomcat 9.0.99.executor": "Run",
-    "git-widget-placeholder": "roomDashboard-posts",
+    "git-widget-placeholder": "roomDashboard-posts-crycry",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Java/MockTradeHub/src/main/webapp/css",
     "list.type.of.created.stylesheet": "CSS",
@@ -297,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740641606496</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="order  로직에 관련된 코드,.,">
+      <option name="closed" value="true" />
+      <created>1740646675433</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740646675433</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
