@@ -92,7 +92,6 @@ socket.onmessage = function(event) {
             var prdyVrss = parseFloat(stockData["PRDY_VRSS"]);
             var prdyCtrt = stockData["PRDY_CTRT"];
             var sign = stockData["PRDY_VRSS_SIGN"];
-            var accumulatedVolume = parseFloat(stockData["ACML_VOL"]);
             highestPrice = parseFloat(stockData["STCK_HGPR"]);
 
             if (stockCode && currentPrice && prdyCtrt) {

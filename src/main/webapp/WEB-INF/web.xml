@@ -3,4 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>org.example.mocktradehub.util.LoginFilter</filter-class>
+    </filter>
+
+    <!-- 필터 매핑 -->
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/room/*</url-pattern>
+    </filter-mapping>
 </web-app>
