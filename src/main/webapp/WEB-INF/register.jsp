@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>로그인</title>
+    <title>회원가입</title>
     <style>
         /* 전체 레이아웃 및 배경 */
         * {
@@ -207,11 +207,15 @@
 <div class="login-container">
     <!-- 로그인 박스 -->
     <div class="login-box">
-        <h2>로그인</h2>
+        <h2>회원가입</h2>
 
         <!-- 폼 -->
-        <form action="login" method="post">
-        <div class="form-group">
+        <form action="register" method="post">
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="예) 김다우" required>
+            </div>
+            <div class="form-group">
                 <label for="id">아이디</label>
                 <input type="text" id="id" name="id" placeholder="예) daoudaou" required>
             </div>
@@ -219,21 +223,33 @@
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="form-group">
+                <label for="nickname">닉네임</label>
+                <input type="text" id="nickname" name="nickname" placeholder="예) 다우" required>
+            </div>
+
+            <!-- 체크박스들 -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree1" name="agree1" required>
+                <label for="agree1">개인 정보 수집 및 이용 동의(필수)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree2" name="agree2" required>
+                <label for="agree2">개인정보 제3자 제공 동의(필수)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree3" name="agree3">
+                <label for="agree3">개인정보 제3자 제공 동의(선택)</label>
+            </div>
 
             <button type="submit" class="login-btn">로그인</button>
         </form>
 
         <div class="bottom-text">
-            아직 회원이 아니신가요?
-            <a href="register">회원가입 하기</a>
+            이미 회원이신가요?
+            <a href="login">로그인 하기</a>
         </div>
     </div>
 </div>
-<% if (request.getAttribute("error") != null) { %>
-<script>
-    alert("<%= request.getAttribute("error") %>");
-</script>
-<% } %>
-
 </body>
 </html>

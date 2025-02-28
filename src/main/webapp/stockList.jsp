@@ -1,7 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>실시간 주식 가격</title>
@@ -10,12 +8,12 @@
             crossorigin="anonymous"></script>
     <script>
         var approvalKey = "<%= request.getAttribute("approvalKey") %>";
+        var roomId = "<%= request.getAttribute("roomId") %>";
     </script>
     <script src="../js/websocket.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/stocklist.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
+
 <div id="table-section">
     <div id="tableTitle">
         <h1>실시간 차트</h1>
@@ -91,5 +89,4 @@
         </table>
     </div>
 </div>
-</body>
-</html>
+

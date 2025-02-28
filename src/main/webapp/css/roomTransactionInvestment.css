@@ -1,0 +1,67 @@
+.stock-holdings {
+    width: 100%;
+    max-width: 944px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.stock-holdings__title {
+    color: #333b69;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.stock-holdings__table-wrapper {
+    border-radius: 25px;
+    padding: 25px 32px;
+    background-color: #fff;
+}
+.stock-holdings__table {
+    width: 100%;
+}
+.stock-holdings__header {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #d2cdcd;
+    color: #232323;
+    font-size: 20px;
+}
+.stock-holdings__header-cell {
+    flex: 1;
+}
+.stock-holdings__row {
+    display: flex;
+    padding: 10px 0;
+    color: #232323;
+    font-size: 24px;
+}
+.stock-holdings__cell {
+    flex: 1;
+}
+@media (max-width: 991px) {
+    .stock-holdings__table-wrapper {
+        padding: 15px 20px;
+    }
+    .stock-holdings__header,
+    .stock-holdings__row {
+        font-size: 20px;
+    }
+}
+@media (max-width: 640px) {
+    .stock-holdings__title {
+        font-size: 18px;
+    }
+    .stock-holdings__table-wrapper {
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .stock-holdings__header,
+    .stock-holdings__row {
+        font-size: 16px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .stock-holdings__header-cell,
+    .stock-holdings__cell {
+        padding: 5px 0;
+    }
+}

@@ -10,17 +10,25 @@ body {
 div#tableTitle h1 {
     font-size: 24px;
     color: #343C6A;
-    padding-left: 5%;
+    padding-left: 32px;
+    padding-bottom: 20px;
+    font-weight: bold;
 }
 
+
 div#stockTable {
-    width: 80%;
+    width: 100%;
     background-color: white;
     border: none;
     border-radius: 30px;
     margin: 0 auto; /* div가 화면 중앙에 오도록 */
     padding: 20px; /* div 내부 여백 추가 */
 }
+#table-section {
+    width: 80%;
+    /* 기타 필요한 스타일 */
+}
+
 
 table {
     width: 100%; /* table을 div의 너비에 맞게 꽉 차게 설정 */

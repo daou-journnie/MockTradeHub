@@ -3,10 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StockMapper">
-    <!-- 주어진 STOCK_CODE로 STOCK_NAME을 조회 -->
+  
     <select id="getStockNameByCode" resultType="String" parameterType="String">
         SELECT STOCK_NAME
         FROM STOCKS
         WHERE STOCK_CODE = #{stockCode}
     </select>
+  
 </mapper>

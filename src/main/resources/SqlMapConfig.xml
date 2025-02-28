@@ -26,6 +26,9 @@
         <typeAlias alias="Stock" type="org.example.mocktradehub.model.Stock" />
 
         <typeAlias alias="RoomMember" type="org.example.mocktradehub.model.RoomMember" />
+        <typeAlias alias="Order" type="org.example.mocktradehub.model.Order" />
+        <typeAlias alias="Post" type="org.example.mocktradehub.model.Post" />
+        <typeAlias alias="Stock" type="org.example.mocktradehub.model.Stock" />
     </typeAliases>
     
     <!--  DB 연결 정보  -->
@@ -45,8 +48,9 @@
     <mappers>
         <mapper resource="./sqlMapper/Member.xml"/>
         <mapper resource="./sqlMapper/Room.xml"/>
-        <mapper resource="./sqlMapper/Order.xml"/>
+        <mapper resource="./sqlMapper/RoomMember.xml"/>
         <mapper resource="./sqlMapper/Post.xml"/>
+        <mapper resource="./sqlMapper/Order.xml"/>
         <mapper resource="./sqlMapper/Stock.xml"/>
 
     </mappers>

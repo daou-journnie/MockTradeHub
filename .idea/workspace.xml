@@ -9,10 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="order  로직에 관련된 코드,.,">
+
+    <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="하세요">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/roomDashboardView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/roomDashboardView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/PostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/PostDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/RoomMemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/RoomMemberDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/StockDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/StockDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/OrderInsertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/OrderInsertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomStockDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/controller/room/RoomStockDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/model/RoomMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/model/RoomMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/RoomMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/service/RoomMemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlMapper/Order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlMapper/Order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlMapper/RoomMember.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlMapper/RoomMember.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/websocketDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/websocketDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/stockDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/stockDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,35 +132,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Tomcat 서버.Tomcat 9.0.99.executor": "Run",
-    "git-widget-placeholder": "roomDashboard-posts-crycry",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Java/MockTradeHub/src/main/webapp/css",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "아티팩트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Tomcat 서버.Tomcat 9.0.99.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;stockAPI&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Java/MockTradeHub/src/main/webapp/css&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;아티팩트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Java\MockTradeHub\src\main\webapp\css" />
@@ -223,6 +239,8 @@
       <workItem from="1740449130230" duration="330000" />
       <workItem from="1740467064800" duration="12029000" />
       <workItem from="1740614194477" duration="15754000" />
+      <workItem from="1740699425033" duration="5211000" />
+      <workItem from="1740704683889" duration="12544000" />
     </task>
     <task id="LOCAL-00001" summary="Project 생성">
       <option name="closed" value="true" />
@@ -288,23 +306,16 @@
       <option name="project" value="LOCAL" />
       <updated>1740556341267</updated>
     </task>
-    <task id="LOCAL-00009" summary="order  로직에 관련된 코드,.,">
+
+    <task id="LOCAL-00009" summary="하세요">
       <option name="closed" value="true" />
-      <created>1740641606496</created>
+      <created>1740702950161</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1740641606496</updated>
+      <updated>1740702950161</updated>
     </task>
-    <task id="LOCAL-00010" summary="order  로직에 관련된 코드,.,">
-      <option name="closed" value="true" />
-      <created>1740646675433</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1740646675433</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +340,8 @@
     <MESSAGE value="register 한글 인코딩" />
     <MESSAGE value="room register 생성" />
     <MESSAGE value="체결가 API 연결 및 실시간 차트 화면 구현" />
-    <MESSAGE value="order  로직에 관련된 코드,.," />
-    <option name="LAST_COMMIT_MESSAGE" value="order  로직에 관련된 코드,.," />
+
+    <MESSAGE value="하세요" />
+    <option name="LAST_COMMIT_MESSAGE" value="하세요" />
   </component>
 </project>

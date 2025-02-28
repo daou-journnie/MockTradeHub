@@ -5,36 +5,52 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.model.Order;
 
 public class OrderDAO {
-    private SqlSessionFactory sqlSessionFactory;
-
-    public OrderDAO(SqlSessionFactory factory) {
-        this.sqlSessionFactory = factory;
+    public OrderDAO() {
     }
 
-    public int insertOrder(Order order) {
-        SqlSession session = sqlSessionFactory.openSession();
+    public int insertOrder(SqlSession session, Order order) {
         int result = 0;
+        System.out.println("DAO : " + order.getStockCode());
         try {
             result = session.insert("OrderMapper.insertOrder", order);
             session.commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
         return result;
     }
 
-    public Order selectOrderById(int id) {
-        SqlSession session = sqlSessionFactory.openSession();
+    public Order selectOrderById(SqlSession session, int id) {
         Order order = null;
         try {
             order = session.selectOne("OrderMapper.selectOrderByIdToPost", id);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
         return order;
+    }
+
+    public int countTotalQuantity(SqlSession session, Order order) {
+        int total = 0;
+
+        try {
+            total = session.selectOne("OrderMapper.countTotalQuantityByRoomMemberIdAndStockCode", order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
+
+    public int sumTotalPrice(SqlSession session, Order order) {
+        int total = 0;
+
+        try {
+            total = session.selectOne("OrderMapper.sumTotalPriceByRoomMemberIdAndStockCode", order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return total;
     }
 }
