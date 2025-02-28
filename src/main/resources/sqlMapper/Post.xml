@@ -18,9 +18,8 @@
 
     <!-- 특정 방의 포스트 리스트 조회 (최신순이 아래 오게) -->
     <select id="getPostsByRoomId" resultType="Post" parameterType="int">
-        SELECT *
-        FROM POSTS
+        SELECT P.*, (SELECT MEMBER_NICKNAME FROM MEMBERS M WHERE M.MEMBER_ID = P.MEMBER_ID) AS MEMBER_NICKNAME
+        FROM POSTS P
         WHERE ROOM_ID = #{roomId}
-        ORDER BY POST_CREATED_AT ASC
     </select>
 </mapper>
