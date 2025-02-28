@@ -1,0 +1,146 @@
+.balance-section {
+    display: flex;
+    max-width: 944px;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    white-space: nowrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+    .balance-section {
+        white-space: initial;
+    }
+}
+.balance-card {
+    border-radius: 25px;
+    background-color: #fff;
+    align-self: stretch;
+    display: flex;
+    min-width: 240px;
+    min-height: 156px;
+    flex-direction: column;
+    justify-content: center;
+    width: 467px;
+    margin: auto 0;
+    padding: 30px 20px;
+}
+@media (max-width: 991px) {
+    .balance-card {
+        max-width: 100%;
+        white-space: initial;
+    }
+}
+.balance-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+@media (max-width: 991px) {
+    .balance-content {
+        max-width: 100%;
+        white-space: initial;
+    }
+}
+.balance-info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+@media (max-width: 991px) {
+    .balance-info {
+        max-width: 100%;
+        white-space: initial;
+    }
+}
+.balance-label {
+    color: #718ebf;
+    font-size: 24px;
+    font-weight: 400;
+}
+.balance-amount {
+    color: #232323;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.value-card {
+    border-radius: 25px;
+    background-color: #fff;
+    align-self: stretch;
+    display: flex;
+    min-width: 240px;
+    min-height: 156px;
+    flex-direction: column;
+    justify-content: center;
+    width: 467px;
+    margin: auto 0;
+    padding: 30px 20px;
+}
+@media (max-width: 991px) {
+    .value-card {
+        max-width: 100%;
+        white-space: initial;
+    }
+}
+.value-content {
+    display: flex;
+    width: 100%;
+    gap: 40px 100px;
+    justify-content: space-between;
+    flex: 1;
+    height: 100%;
+}
+@media (max-width: 991px) {
+    .value-content {
+        max-width: 100%;
+        white-space: initial;
+    }
+}
+.market-value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-width: 991px) {
+    .market-value {
+        white-space: initial;
+    }
+}
+.value-label {
+    color: #718ebf;
+    font-size: 24px;
+    font-weight: 400;
+}
+.value-amount {
+    color: #232323;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.profit-rate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-width: 991px) {
+    .profit-rate {
+        white-space: initial;
+    }
+}
+.rate-label {
+    color: #718ebf;
+    font-size: 24px;
+    font-weight: 400;
+}
+.rate-value {
+    color: #232323;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
+}

@@ -1,0 +1,100 @@
+.transaction-history {
+    width: 944px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.transaction-title {
+    color: #333b69;
+
+    font: 700 22px "Noto Sans KR", sans-serif;
+}
+.transaction-container {
+    border-radius: 25px;
+    padding: 25px 32px;
+    background-color: #fff;
+}
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+.transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.transaction-date {
+    color: #718ebf;
+    font: 400 20px "Noto Sans KR", sans-serif;
+}
+.transaction-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.transaction-company,
+.transaction-period {
+    color: #232323;
+    font: 700 24px "Noto Sans KR", sans-serif;
+}
+.transaction-type {
+    color: #718ebf;
+    font: 400 20px "Noto Sans KR", sans-serif;
+}
+.transaction-financials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.transaction-amount {
+    color: #232323;
+    font: 700 20px "Noto Sans KR", sans-serif;
+}
+.transaction-total {
+    color: #718ebf;
+    font: 400 20px "Noto Sans KR", sans-serif;
+}
+@media (max-width: 991px) {
+    .transaction-history {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .transaction-container {
+        padding: 20px;
+    }
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .transaction-financials {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 640px) {
+    .transaction-title {
+        font-size: 20px;
+    }
+    .transaction-container {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .transaction-date,
+    .transaction-type,
+    .transaction-total {
+        font-size: 16px;
+    }
+    .transaction-company,
+    .transaction-period {
+        font-size: 20px;
+    }
+    .transaction-amount {
+        font-size: 18px;
+    }
+    .transaction-details {
+        flex-wrap: wrap;
+    }
+}
