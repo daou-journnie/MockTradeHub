@@ -1,6 +1,9 @@
 package org.example.mocktradehub.DAO;
 
 import org.apache.ibatis.session.SqlSession;
+import org.example.mocktradehub.model.Stock;
+
+import java.util.List;
 
 public class StockDAO {
 
@@ -20,4 +23,5 @@ public class StockDAO {
         }
         return stockName;
     }
+
 }

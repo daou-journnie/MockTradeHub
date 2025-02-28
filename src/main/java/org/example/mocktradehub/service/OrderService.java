@@ -7,9 +7,12 @@ import org.example.mocktradehub.DAO.PostDAO;
 import org.example.mocktradehub.DAO.RoomMemberDAO;
 import org.example.mocktradehub.DAO.StockDAO;
 import org.example.mocktradehub.model.Order;
+import org.example.mocktradehub.model.Portfolio;
 import org.example.mocktradehub.model.Post;
 import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
+
+import java.util.List;
 
 public class OrderService {
     private SqlSessionFactory factory;
@@ -123,5 +126,17 @@ public class OrderService {
         SqlSession session = factory.openSession();
         return orderDAO.selectOrderById(session, orderId);
     }
+
+    public List<Portfolio> getPortfolioList(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        List<Portfolio> portfolios = null;
+        // 보유주식 리스트 받아오기
+        portfolios = orderDAO.selectPortfoliosByRoomMemberId(session, roomMemberId);
+        return portfolios;
+    }
+
+
+
+
 
 }
