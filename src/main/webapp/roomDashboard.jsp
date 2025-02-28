@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     request.setAttribute("currentPage", request.getRequestURI());
-
 %>
 <!DOCTYPE html>
 <html>
@@ -34,18 +33,9 @@
                 </div>
                 <!-- Include Room Ranking -->
                 <div class="w-1/2">
-<%--                <jsp:include page="roomRanking.jsp" />--%>
+                    <jsp:include page="roomRanking.jsp" />
                 </div>
             </div>
-            <div>
-<%--                transaction jsp--%>
-            </div>
-            <div>
-                so
-            </div>
-
-            <!-- Include Room List -->
-<%--            <jsp:include page="roomListMember.jsp" />--%>
         </main>
     </div>
 </div>
