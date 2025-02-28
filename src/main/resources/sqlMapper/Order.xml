@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+    <insert id="insertOrder" parameterType="Order">
+        <selectKey keyProperty="orderId" resultType="int" order="BEFORE">
+            SELECT C##DEV.ORDERS_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO ORDERS (
+            order_id,
+            room_member_id,
+            order_type,
+            order_total_quantity,
+            order_price,
+            order_time,
+            stock_code
+        )
+        VALUES (
+                   #{orderId},
+                   #{roomMemberId},
+                   #{orderType},
+                   #{orderTotalQuantity},
+                   #{orderPrice},
+                   #{orderTime},
+                   #{stockCode}
+               )
+    </insert>
+
+    <select id="selectOrderById" resultType="Member" parameterType="String">
+        SELECT *
+        FROM ORDERS
+        WHERE order_id = #{id}
+    </select>
+</mapper>
