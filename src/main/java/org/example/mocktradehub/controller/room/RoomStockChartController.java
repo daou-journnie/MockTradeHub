@@ -69,7 +69,7 @@ public class RoomStockChartController extends HttpServlet {
 
         request.setAttribute("roomId", roomId);
         request.setAttribute("approvalKey", approvalKey);
-        RequestDispatcher rd = request.getRequestDispatcher("../stockList.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("../roomMockTrade.jsp");
         rd.forward(request, response);
     }
 }

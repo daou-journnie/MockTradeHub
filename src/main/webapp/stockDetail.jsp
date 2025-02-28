@@ -1,7 +1,5 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
     <title><%= request.getAttribute("stockTitle") %> 상세 정보</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -13,8 +11,6 @@
     <script src="../js/websocketDetail.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/stockDetail.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
 <%
     String stockCode = (String) request.getAttribute("stockCode");
     String stockTitle = (String) request.getAttribute("stockTitle");
@@ -62,5 +58,3 @@
             </div>
         </form>
     </div>
-</body>
-</html>

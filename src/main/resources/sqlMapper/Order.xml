@@ -37,4 +37,13 @@
         WHERE room_member_id = #{roomMemberId}
         AND stock_code = #{stockCode}
     </select>
+
+    <select id="sumTotalPriceByRoomMemberIdAndStockCode" parameterType="Order" resultType="int">
+        SELECT NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)*ORDER_PRICE), 0) AS TOTAL_PRICE
+        FROM ORDERS
+        WHERE room_member_id = #{roomMemberId}
+          AND stock_code = #{stockCode}
+    </select>
+
+
 </mapper>

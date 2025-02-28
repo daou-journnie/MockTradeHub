@@ -41,4 +41,16 @@ public class OrderDAO {
 
         return total;
     }
+
+    public int sumTotalPrice(SqlSession session, Order order) {
+        int total = 0;
+
+        try {
+            total = session.selectOne("OrderMapper.sumTotalPriceByRoomMemberIdAndStockCode", order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
 }

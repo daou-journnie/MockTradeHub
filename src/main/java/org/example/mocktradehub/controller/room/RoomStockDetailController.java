@@ -52,7 +52,7 @@ public class RoomStockDetailController extends HttpServlet {
         req.setAttribute("balance", balance);
         req.setAttribute("quantity", quantity);
 
-        RequestDispatcher rd = req.getRequestDispatcher("../stockDetail.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("../roomMockTradeDetail.jsp");
         rd.forward(req, resp);
     }
 }
