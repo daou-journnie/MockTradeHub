@@ -15,8 +15,8 @@ public class StockDAO {
         String stockName = null;
         try {
             stockName =  session.selectOne("StockMapper.getStockNameByCode", stockCode);
-        } finally {
-            session.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return stockName;
     }

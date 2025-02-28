@@ -42,13 +42,19 @@ public class OrderInsertController extends HttpServlet {
         order.setOrderTotalQuantity(orderTotalQuantity);
         order.setOrderPrice(orderPrice);
         order.setStockCode(stockCode);
-
-        boolean isCreated = orderService.createOrder(order);
+        System.out.println("OrderInsertController : " + order.getStockCode());
+        String message;
+        try {
+            message = orderService.createOrder(memberId, order);
+        } catch (Exception e) {
+            e.printStackTrace();
+            message = "failure";
+        }
 
         // JSON 응답 작성
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        String jsonResponse = "{\"success\": " + (isCreated ? "true" : "false") + "}";
+        String jsonResponse = "{\"success\": \"" + message + "\"}";
         response.getWriter().write(jsonResponse);
     }
 }

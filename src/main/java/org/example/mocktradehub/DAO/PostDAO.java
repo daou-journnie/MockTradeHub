@@ -17,8 +17,6 @@ public class PostDAO {
             session.commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
         return result;
     }
@@ -28,8 +26,8 @@ public class PostDAO {
         List<Post> posts = null;
         try {
             posts =  session.selectList("PostMapper.getPostsByRoomId", roomId);
-        } finally {
-            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return posts;
     }

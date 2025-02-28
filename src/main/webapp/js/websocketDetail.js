@@ -110,7 +110,7 @@ socket.onmessage = function(event) {
                 } else if (sign == 4 || sign == 5) {
                     prdyElement.classList.add("negative");
                 }
-                realPrice.values(currentPrice);
+                realPrice.value = currentPrice;
                 priceElement.innerText = currentPrice.toLocaleString() + "원";
                 prdyElement.innerText = prdyText;
                 var total = amount * highestPrice;
@@ -147,22 +147,24 @@ $(document).ready(function() {
         let roomId = $("#roomId").val();
 
         $.ajax({
-            url: "/room/stockDetail",
+            url: "order",
             type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
+            data: {
                 orderType: orderType,
                 buyingAmount: buyingAmount,
                 realPrice: realPrice,
-                roomId: roomId
-            }),
+                roomId: roomId,
+                stockCode: stockCode
+            },
             success: function(response) {
-                alert("주문이 성공적으로 처리되었습니다.");
+                alert(response.success);
+                location.reload();
             },
             error: function(xhr, status, error) {
                 alert("주문 처리 중 오류가 발생했습니다.");
                 console.error(error);
             }
         });
+
     });
 });

@@ -1,3 +1,4 @@
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,7 +8,7 @@
             crossorigin="anonymous"></script>
     <script>
         var approvalKey = "<%= request.getAttribute("approvalKey") %>";
-        var stockCode = "<%= request.getAttribute("stockId") %>"
+        var stockCode = "<%= request.getAttribute("stockCode") %>"
     </script>
     <script src="../js/websocketDetail.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/stockDetail.css">
@@ -15,26 +16,37 @@
 </head>
 <body>
 <%
-    String stockId = (String) request.getAttribute("stockId");
+    String stockCode = (String) request.getAttribute("stockCode");
     String stockTitle = (String) request.getAttribute("stockTitle");
     String price = (String) request.getAttribute("price");
     String prdy = (String) request.getAttribute("prdy");
     int roomId = (int) request.getAttribute("roomId");
+    int balance = (int) request.getAttribute("balance");
+    int quantity = (int) request.getAttribute("quantity");
+    System.out.println("jsp quantity: " + quantity);
+    DecimalFormat df = new DecimalFormat("#,###");
+    String formattedBalance = df.format(balance);
+    String formattedQuantity = df.format(quantity);
 %>
-    <div id="stockInfo">
-        <h3><%= stockTitle + "(" + stockId + ")"%></h3>
-        <span class="price" id=<%= "price-" + stockId%>><%= price %></span>
-        <span id=<%= "prdy-" + stockId%>><%= prdy %></span>
-    </div>
+
     <div id="buy-section">
+        <div id="stockInfo">
+            <h3><%= stockTitle + "(" + stockCode + ")"%></h3>
+            <span class="price" id=<%= "price-" + stockCode%>><%= price %></span>
+            <span id=<%= "prdy-" + stockCode%>><%= prdy %></span>
+        </div>
         <form>
             <h4>주문하기</h4>
             <label>수량</label>
             <input id="buyingAmount" type="number" name="buyingAmount" value="0" min="0"/>
             <hr>
             <div class="totalPrice">
-                <span class="left-text">구매가능 금액</span>
-                <span class="right-text">0원</span>
+                <span class="left-text">구매 가능 금액</span>
+                <span id="totalBalance" class="right-text"><%= formattedBalance %>원</span>
+            </div>
+            <div class="totalPrice">
+                <span class="left-text">보유 수량</span>
+                <span id="totalStocks" class="right-text"><%= formattedQuantity %>주</span>
             </div>
             <div class="totalPrice">
                 <span class="left-text">예상 총 주문 금액</span>

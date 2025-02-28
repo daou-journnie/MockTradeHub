@@ -136,11 +136,11 @@ socket.onerror = function(error) {
     console.log("WebSocket 오류: " + error.message);
 };
 
-function sendStockDetail(stockId) {
-    const stockTitle = $("#" + stockId + " .stockTitle").text();
-    const price = document.getElementById(`price-${stockId}`).innerText.trim();
-    const prdy = document.getElementById(`prdy-${stockId}`).innerText.trim();
-    const vol = document.getElementById(`vol-${stockId}`).innerText.trim();
+function sendStockDetail(stockCode) {
+    const stockTitle = $("#" + stockCode + " .stockTitle").text();
+    const price = document.getElementById(`price-${stockCode}`).innerText.trim();
+    const prdy = document.getElementById(`prdy-${stockCode}`).innerText.trim();
+    const vol = document.getElementById(`vol-${stockCode}`).innerText.trim();
 
     // 동적으로 form 생성
     const form = document.createElement("form");
@@ -156,7 +156,7 @@ function sendStockDetail(stockId) {
         form.appendChild(input);
     };
 
-    addHiddenInput("stockId", stockId);
+    addHiddenInput("stockCode", stockCode);
     addHiddenInput("stockTitle", stockTitle);
     addHiddenInput("price", price);
     addHiddenInput("prdy", prdy);
