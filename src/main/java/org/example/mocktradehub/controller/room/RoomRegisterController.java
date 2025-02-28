@@ -1,6 +1,7 @@
 package org.example.mocktradehub.controller.room;
 
 import org.example.mocktradehub.model.Room;
+import org.example.mocktradehub.service.RoomMemberService;
 import org.example.mocktradehub.service.RoomService;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import java.util.Date;
 @WebServlet("/room/register")
 public class RoomRegisterController extends HttpServlet {
     private RoomService roomService = new RoomService();
+    private RoomMemberService roomMemberService = new RoomMemberService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,6 +26,21 @@ public class RoomRegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        HttpSession session = request.getSession(false);
+        String memberId = null;
+        if (session != null) {
+            memberId = (String) session.getAttribute("id");
+        }
+
+        // 로그인되지 않은 사용자는 글 작성 불가
+        if (memberId == null) {
+            String contextPath = request.getContextPath();
+            response.getWriter().println("<script>alert('로그인이 필요합니다.'); location.href='" + contextPath +"/login.jsp';</script>");
+            return;
+        }
 
         // 요청 파라미터 읽기
         String roomName = request.getParameter("roomName");
@@ -33,7 +50,7 @@ public class RoomRegisterController extends HttpServlet {
         String roomEndDateStr = request.getParameter("roomEndDate");
         int roomInitialSeed = Integer.parseInt(request.getParameter("roomInitialSeed")+"0000");
         String roomDescription = request.getParameter("roomDescription");
-        String roomCreatedBy = request.getParameter("roomCreatedBy");
+        String roomCreatedBy = memberId;
 
         System.out.println("roomName: " + roomName);
         System.out.println("roomIsPublic: " + roomIsPublic);
@@ -76,6 +93,7 @@ public class RoomRegisterController extends HttpServlet {
         boolean isCreated = roomId > 0;
 
         if (isCreated) {
+            this.roomMemberService.createRoomMember(roomId, memberId, roomInitialSeed);
             // 생성된 방의 상세 페이지로 이동: 예시 URL: /room/dashboard?roomId=XXX
             response.sendRedirect(request.getContextPath() + "/room/dashboard?roomId=" + roomId);
         } else {

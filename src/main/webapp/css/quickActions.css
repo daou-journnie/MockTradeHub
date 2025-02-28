@@ -1,0 +1,197 @@
+/* Quick Actions Container */
+.quick-actions-title {
+    align-self: flex-start;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #334155;
+}
+.quick-actions {
+    width: 70%;
+    margin-left: 1.25rem;
+}
+
+.quick-actions-container {
+    flex-grow: 1;
+    padding: 5rem 5rem 4rem;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Actions Grid Layout */
+.actions-grid {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.action-item {
+    width: 50%;
+    position: relative;
+}
+
+/* Action Content Styling */
+.action-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.action-icon {
+    object-fit: contain;
+    aspect-ratio: 1.22;
+    width: 71px;
+    margin-bottom: 0.5rem;
+}
+
+.action-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 1rem;
+}
+
+/* Hover Effects */
+.action-content:hover {
+    transform: translateY(-5px);
+}
+
+.action-content::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #2563eb;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.action-content:hover::after {
+    width: 50%;
+}
+
+/* Focus States */
+.action-content:focus {
+    outline: none;
+}
+
+.action-content:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Active State */
+.action-content:active {
+    transform: translateY(-2px);
+}
+
+/* Loading State */
+.action-content.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.action-content.loading .action-icon {
+    animation: pulse 1.5s infinite;
+}
+
+/* Success State */
+.action-content.success .action-icon {
+    border: 2px solid #22c55e;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+/* Error State */
+.action-content.error .action-icon {
+    border: 2px solid #ef4444;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .quick-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .quick-actions-container {
+        padding: 1.25rem;
+        margin-top: 2.5rem;
+    }
+
+    .actions-grid {
+        flex-direction: column;
+    }
+
+    .action-item {
+        width: 100%;
+    }
+
+    .action-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Tooltip */
+.action-content {
+    position: relative;
+}
+
+.action-content::before {
+    content: attr(aria-label);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background-color: #1f2937;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.action-content:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .action-content {
+        transition: none;
+    }
+
+    .action-content:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,184 @@
+/* Room List Section */
+.room-list-section {
+    margin-top: 4rem;
+}
+
+.room-list-title {
+    align-self: flex-start;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.room-list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 2.25rem 0 1.5rem;
+    background-color: white;
+    border-radius: 1.5rem;
+}
+
+/* Header Styles */
+.room-list-header {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-between;*/
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.header-left, .room-info {
+    display: grid;
+    grid-template-columns: 10% 10% 20% 20% 20% 20%;
+    align-items: center;
+    text-align: left;
+}
+/*.header-left {*/
+/*    display: flex;*/
+/*    gap: 2.5rem;*/
+/*}*/
+
+/*.header-right {*/
+/*    display: flex;*/
+/*    gap: 2.5rem;*/
+/*    white-space: nowrap;*/
+/*}*/
+
+/* Dividers */
+.room-list-divider {
+    flex-shrink: 0;
+    margin-top: 0.75rem;
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+}
+
+.entry-divider {
+    flex-shrink: 0;
+    margin-top: 1rem;
+    height: 1px;
+    background-color: #f1f5f9;
+    width: 100%;
+}
+
+ /*Room Entries */
+.room-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.room-entry {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    justify-content: space-between;
+    width: 100%;
+    /*max-width: 1006px;*/
+}
+
+.room-info {
+    /*display: flex;*/
+    /*gap: 2.5rem;*/
+    /*margin: auto 0;*/
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.room-name {
+    flex-grow: 1;
+}
+
+.room-actions {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* Profit Rate Styles */
+.profit-rate {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.profit-rate.positive {
+    color: #2dd4bf;
+}
+
+.profit-rate.negative {
+    color: #f87171;
+}
+
+/* Action Button */
+.room-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 0.625rem 1rem;
+        font-size: 1rem;
+        color: #1e3a8a;
+        border: 1px solid #1e3a8a;
+        border-radius: 25px;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+.room-button:hover {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .room-list-title {
+        margin-top: 2.5rem;
+        margin-left: 0.625rem;
+    }
+
+    .room-list-container {
+        padding: 1.25rem;
+        margin-right: 0.625rem;
+    }
+
+    .room-info {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .header-left,
+    .header-right {
+        gap: 1.5rem;
+    }
+
+    .room-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    .action-button {
+        padding-right: 1.25rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.room-entry {
+    animation: fadeIn 0.3s ease-out;
+}

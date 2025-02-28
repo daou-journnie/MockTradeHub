@@ -10,6 +10,7 @@
             crossorigin="anonymous"></script>
     <script>
         var approvalKey = "<%= request.getAttribute("approvalKey") %>";
+        var roomId = "<%= request.getAttribute("roomId") %>";
     </script>
     <script src="../js/websocket.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/stocklist.css">

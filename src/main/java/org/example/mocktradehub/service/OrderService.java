@@ -1,43 +1,127 @@
 package org.example.mocktradehub.service;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.DAO.OrderDAO;
+import org.example.mocktradehub.DAO.PostDAO;
+import org.example.mocktradehub.DAO.RoomMemberDAO;
 import org.example.mocktradehub.DAO.StockDAO;
 import org.example.mocktradehub.model.Order;
 import org.example.mocktradehub.model.Post;
-import org.example.mocktradehub.model.Stock;
+import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
 
 public class OrderService {
+    private SqlSessionFactory factory;
     private OrderDAO orderDAO;
     private PostService postService;
 
     public OrderService() {
-        SqlSessionFactory factory = MyBatisSessionFactory.getSqlSessionFactory();
-        this.orderDAO = new OrderDAO(factory);
+        this.factory = MyBatisSessionFactory.getSqlSessionFactory();
+        this.orderDAO = new OrderDAO();
     }
 
-    // 주문 생성 (insert) 후 성공 시 true 반환
-    public boolean createOrder(Order order) {
-        int id = orderDAO.insertOrder(order);
+    public int countQuantityHeld(int roomMemberId, String stockCode) {
+        int quantity = 0;
+        SqlSession session = factory.openSession();
 
-        if(id > 0) {
-            // order to post 처리
-            postService.createOrderPost(getOrderByOrderId(id));
+        Order order = new Order();
+        order.setRoomMemberId(roomMemberId);
+        order.setStockCode(stockCode);
 
-            // post insert
+        quantity = orderDAO.countTotalQuantity(session, order);
+        return quantity;
+    }
 
+    public String createOrder(String memberId, Order order) {
+        SqlSession session = factory.openSession(false);
+        String orderType = order.getOrderType();
+        String message = validateOrder(session, order, orderType);
 
-
-            return true;
-        } else {
-            // 실패 시 null 또는 예외 처리를 할 수 있습니다.
-            return false;
+        if (message != null) {
+            session.close();
+            return message;
         }
 
+        // 거래 테이블 insert
+        System.out.println("Service : " + order.getStockCode());
+        int orderResult = orderDAO.insertOrder(session, order);
+
+        // 잔액 update
+        int balanceResult = updateBalance(session, order, orderType);
+
+        // Post 테이블 insert
+        String postContent = createPostContent(session, order, orderType);
+        int postResult = insertPost(session, memberId, order, postContent);
+
+        // Commit or rollback
+        if (orderResult > 0 && balanceResult > 0 && postResult > 0) {
+            session.commit();
+            message = "거래에 성공했습니다.";
+        } else {
+            session.rollback();
+            message = "거래에 실패했습니다.";
+        }
+
+        session.close();
+        return message;
+    }
+
+    private String validateOrder(SqlSession session, Order order, String orderType) {
+        RoomMemberDAO roomMemberDAO = new RoomMemberDAO();
+        int balance = roomMemberDAO.getBalanceByRoomMemberId(session, order.getRoomMemberId());
+        int quantityHeld = orderDAO.countTotalQuantity(session, order);
+
+        if (orderType.equals("BUY")) {
+            if (balance < order.getOrderTotalQuantity() * order.getOrderPrice()) {
+                return "보유 잔액이 부족합니다.";
+            }
+        } else if (orderType.equals("SELL")) {
+            if (quantityHeld < order.getOrderTotalQuantity()) {
+                return "보유 수량이 부족합니다.";
+            }
+        } else {
+            return "잘못된 입력입니다.";
+        }
+
+        return null;
+    }
+
+    private int updateBalance(SqlSession session, Order order, String orderType) {
+        RoomMemberDAO roomMemberDAO = new RoomMemberDAO();
+        int balance = roomMemberDAO.getBalanceByRoomMemberId(session, order.getRoomMemberId());
+        RoomMember roomMember = new RoomMember();
+        roomMember.setRoomMemberId(order.getRoomMemberId());
+
+        if (orderType.equals("BUY")) {
+            balance -= order.getOrderPrice() * order.getOrderTotalQuantity();
+        } else if (orderType.equals("SELL")) {
+            balance += order.getOrderPrice() * order.getOrderTotalQuantity();
+        }
+
+        roomMember.setRoomMemberBalance(balance);
+        return roomMemberDAO.updateBalance(session, roomMember);
+    }
+
+    private String createPostContent(SqlSession session, Order order, String orderType) {
+        StockDAO stockDAO = new StockDAO();
+        String stockName = stockDAO.getStockNameByCode(session, order.getStockCode());
+        String orderTypeKorean = orderType.equals("BUY") ? "구매" : "판매";
+        return String.format("%s %d주 %s\n1주당 %s원", stockName, order.getOrderTotalQuantity(), orderTypeKorean, order.getOrderPrice());
+    }
+
+    private int insertPost(SqlSession session, String memberId, Order order, String postContent) {
+        PostDAO postDAO = new PostDAO();
+        Post post = new Post();
+        post.setPostContent(postContent);
+        post.setMemberId(memberId);
+        post.setRoomId(order.getRoomID());
+        return postDAO.insertPost(session, post);
     }
 
     public Order getOrderByOrderId(int orderId) {
-        return orderDAO.selectOrderById(orderId);
+        SqlSession session = factory.openSession();
+        return orderDAO.selectOrderById(session, orderId);
     }
+
 }

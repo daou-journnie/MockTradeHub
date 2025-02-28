@@ -3,6 +3,7 @@ package org.example.mocktradehub.model;
 import java.util.Date;
 
 public class RoomMember {
+    private int roomMemberId;
     private String memberId;
     private int roomMemberBalance;
     private int roomId;              // 자동 생성 (시퀀스)
@@ -18,7 +19,12 @@ public class RoomMember {
     private Date roomEndDate;
     private Date roomJoinedAt;
 
-    public RoomMember(String memberId, int roomMemberBalance, String roomCode, String roomName, String roomStatus, String roomDescription, int roomIsPublic) {
+    public RoomMember() {
+    }
+
+    public RoomMember(int roomMemberId, String memberId, int roomMemberBalance, String roomCode, String roomName, String roomStatus, String roomDescription, int roomIsPublic) {
+        this.roomMemberId = roomMemberId;
+
         this.memberId = memberId;
         this.roomMemberBalance = roomMemberBalance;
         this.roomCode = roomCode;
@@ -27,15 +33,7 @@ public class RoomMember {
         this.roomDescription = roomDescription;
         this.roomIsPublic = roomIsPublic;
     }
-
-    public String getRoomMemberId() {
-        return memberId;
-    }
-
-    public void setRoomMemberId(String memberId) {
-        this.memberId = memberId;
-    }
-
+   
     public int getRoomMemberBalance() {
         return roomMemberBalance;
     }
@@ -138,5 +136,17 @@ public class RoomMember {
 
     public void setRoomJoinedAt(Date roomJoinedAt) {
         this.roomJoinedAt = roomJoinedAt;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setRoomMemberId(int roomMemberId) {
+        this.roomMemberId = roomMemberId;
     }
 }
