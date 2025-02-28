@@ -2,14 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styleguide.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css" />
 </head>
 <body>
 <div class="trade-room">
@@ -21,13 +20,26 @@
                         <div class="feed-container">
                             <div class="text-wrapper">Feed</div>
                             <div class="group">
+                                <%
+                                    // 예시: request에 "posts"라는 이름의 List가 있다고 가정
+                                    java.util.List posts = (java.util.List) request.getAttribute("posts");
+                                    if(posts != null && !posts.isEmpty()){
+                                        for(Object obj : posts){
+                                            Post post = (Post) obj;
+
+                                            // 실제 객체에 맞게 캐스팅하여 사용하세요.
+                                            // 예를 들어: Post post = (Post) obj;
+                                            // 여기서는 더미 데이터를 출력합니다.
+                                %>
                                 <div class="post-list">
-                                    <div class="large-tweet">
+
+                                    <div class="large-post">
+
                                         <div class="frame">
                                             <div class="title-bar">
                                                 <div class="left-tools">
                                                     <div class="text">
-                                                        <div class="div-wrapper"><div class="div">김다우</div></div>
+                                                        <div class="div-wrapper"><div class="div"><%=post.getMemberNickname()%></div></div>
                                                     </div>
                                                 </div>
                                                 <div class="left-tools">
@@ -37,17 +49,45 @@
                                                 </div>
                                             </div>
                                             <div class="bottom">
-                                                <div class="text-2">야호링</div>
+                                                <div class="text-2"><%=post.getPostContent()%></div>
                                                 <div class="toolbar">
                                                     <div class="thread">
                                                         <img class="img" src="https://c.animaapp.com/8XNQhQzb/img/thread.svg" />
-                                                        <div class="text-wrapper-3">1,240</div>
+                                                        <div class="text-wrapper-3">댓글 수 할 건가</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%
+                                            } // end for
+                                        } else {
+                                        %>
+                                        <p>No posts available.</p>
+                                        <% } %>
                                     </div>
+
+
+
+
                                 </div>
+
+                                <!-- 포스트 작성 폼 -->
+                                <%
+                                    // roomId는 request나 session에서 가져온다고 가정합니다.
+                                    int roomId = (int) request.getAttribute("roomId");
+                                    // memberId도 session에서 가져온다고 가정
+                                    String memberId = (String) session.getAttribute("memberId");
+                                %>
+                                <form action="<%= request.getContextPath() %>/room/post/insert" method="post" class="post-form">
+                                    <textarea name="postContent" placeholder="포스트 내용을 입력하세요..." required></textarea>
+                                    <!-- 새로운 포스트인 경우 postParentId는 비워둡니다 -->
+                                    <input type="hidden" name="postParentId" value="" />
+                                    <input type="hidden" name="memberId" value="<%= memberId %>" />
+                                    <input type="hidden" name="roomId" value="<%= roomId %>" />
+
+                                    <button type="submit">작성하기</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
