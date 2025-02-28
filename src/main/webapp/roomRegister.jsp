@@ -1,58 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    request.setAttribute("currentPage", request.getRequestURI());
+%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>방 생성</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankDash Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/roomRegister.css">
 </head>
 <body>
-<h1>방 생성</h1>
-<form action="${pageContext.request.contextPath}/room/register" method="post">
-    <label>방 이름:
-        <input type="text" name="roomName" required />
-    </label><br/>
+<div class="flex overflow-hidden flex-col bg-white">
+    <!-- Include Header -->
+    <jsp:include page="mainHeader.jsp" />
+    <hr class="flex shrink-0 self-end max-w-full h-px bg-slate-200 w-[1190px]" />
 
-    <label>공개 여부:</label>
-    <input type="radio" name="roomIsPublic" value="1" checked /> 공개
-    <input type="radio" name="roomIsPublic" value="0" /> 비공개<br/>
-
-    <label>최대 인원:
-        <input type="number" name="roomMaxMembers" value="10" required />
-    </label><br/>
-
-    <label>시작일:
-        <input type="date" name="roomStartDate" />
-    </label><br/>
-
-    <label>종료일:
-        <input type="date" name="roomEndDate" />
-    </label><br/>
-
-    <label>초기 자금:
-        <input type="number" name="roomInitialSeed" required /> 만원
-    </label><br/>
-
-    <label>방 설명:
-        <textarea name="roomDescription"></textarea>
-    </label><br/>
-
-    <label>생성자 (ID):
-        <input type="text" name="roomCreatedBy" required />
-    </label><br/>
-
-    <input type="submit" value="방 생성" />
-</form>
-
-<%
-    Object error = request.getAttribute("error");
-    if (error != null) {
-%>
-<p style="color:red;"><%= error %></p>
-<%
-    }
-%>
-
-
-<p><a href="roomList.jsp">방 목록으로 이동</a></p>
+    <div class="flex flex-wrap gap-10 w-full max-md:max-w-full">
+        <!-- Include Sidebar -->
+        <jsp:include page="mainSidebar.jsp" />
+        <!-- Main Content -->
+        <main class="flex flex-col grow shrink-0 pb-10 basis-0 bg-slate-100 w-fit max-md:max-w-full">
+            <jsp:include page="roomRegisterForm.jsp" />
+        </main>
+    </div>
+</div>
 </body>
 </html>

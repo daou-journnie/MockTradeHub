@@ -26,6 +26,8 @@ public class RoomService {
         Date now = new Date();
         Date start = room.getRoomStartDate();
         Date end = room.getRoomEndDate();
+
+
         if (start != null && now.before(start)) {
             roomStatus = "INACTIVE";
         } else if (start != null && end != null && now.after(end)) {
@@ -37,14 +39,21 @@ public class RoomService {
 
         // 방 코드 생성
         room.setRoomCode(CodeGenerator.generateRoomCode(8));
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        this.roomDAO.setSqlSession(sqlSession);
 
-        // return 값을 생성된 방 아이디로 하고 싶음 있어보셈...
-        int new_room_id = roomDAO.insertRoom(room);
-
-        if(new_room_id > 0) {
-            return room.getRoomId();
+        try {
+            int roomId = this.roomDAO.insertRoom(room);
+            if (roomId > 0) {
+                sqlSession.commit();
+                return roomId;
+            }
+        } catch (Exception e) {
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
         }
-        return -1;  // 실패 시 음수나 예외 처리
+        return -1;
     }
 
 

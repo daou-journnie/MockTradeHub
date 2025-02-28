@@ -1,0 +1,156 @@
+
+
+/* Content section */
+.content-section {
+    background-color: #f5f7fa;
+    flex-grow: 1;
+    padding: 103px 40px;
+}
+
+.room-form-container {
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 34px 30px;
+}
+
+.form-header {
+    margin-bottom: 52px;
+}
+
+.form-title {
+    color: #1814f3;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 8px 16px;
+}
+
+.title-underline {
+    height: 3px;
+    background-color: #1814f3;
+    border-radius: 10px 10px 0 0;
+}
+
+.form-divider {
+    margin: 29px 0 0;
+    height: 1px;
+    background-color: #f4f5f7;
+    border: none;
+}
+
+/* Form styles */
+.room-form {
+    max-width: 865px;
+}
+
+.form-row {
+    display: flex;
+    gap: 29px;
+    margin-bottom: 22px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #232323;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 11px;
+}
+
+.form-input {
+    border: 1px solid #dfeaf2;
+    border-radius: 15px;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #718ebf;
+}
+
+.date-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dfeaf2;
+    border-radius: 15px;
+    padding: 16px 22px;
+    font-size: 15px;
+    color: #718ebf;
+}
+
+
+
+.privacy-section {
+    margin: 22px 0;
+    color: #232323;
+    font-size: 20px;
+}
+
+.privacy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.privacy-dropdown {
+    width: 150px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.privacy-dropdown:focus {
+    border-color: #2563eb; /* 파란색 포커스 */
+    outline: none;
+}
+
+.save-button {
+    background-color: #1814f3;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 14px 70px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 80px;
+    margin-left: auto;
+    width: 190px;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    .header-content {
+        padding: 2px 20px;
+    }
+
+    .content-section {
+        padding: 100px 20px;
+    }
+
+    .room-form-container {
+        padding: 34px 20px;
+    }
+
+    .form-row {
+        flex-wrap: wrap;
+    }
+
+    .save-button {
+        margin-top: 40px;
+        padding: 14px 20px;
+    }
+
+    .brand-name {
+        white-space: normal;
+    }
+
+    .date-input {
+        padding-right: 20px;
+    }
+}

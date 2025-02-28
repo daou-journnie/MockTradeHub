@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RoomMapper">
     <select id="getMyRooms" parameterType="String" resultType="RoomMember">
-        SELECT MEMBER_ID, ROOM_MEMBER_BALANCE, ROOM_CODE, ROOM_NAME, ROOM_STATUS, ROOM_DESCRIPTION, ROOM_IS_PUBLIC
+        SELECT R.ROOM_ID, MEMBER_ID, ROOM_MEMBER_BALANCE, ROOM_CODE, ROOM_NAME, ROOM_STATUS, ROOM_DESCRIPTION, ROOM_IS_PUBLIC
         FROM ROOMMEMBERS RM, ROOMS R
         WHERE  RM.ROOM_ID = R.ROOM_ID
         AND RM.MEMBER_ID = #{MEMBER_ID}
