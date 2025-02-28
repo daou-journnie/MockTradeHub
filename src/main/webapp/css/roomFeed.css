@@ -1,0 +1,110 @@
+.feed-section {
+    flex: 1;
+    max-width: 465px;
+}
+
+.feed-header {
+    color: #343c6a;
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feed-container {
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.feed-card {
+    border-radius: 25px;
+    padding: 25px;
+    background-color: #fff;
+}
+
+.feed-content {
+    padding: 16px;
+    border-bottom: 1px solid #bdb8b8;
+}
+
+.feed-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user-name {
+    color: #171717;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.time-ago {
+    color: #171717;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.feed-text {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.feed-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.comment-count {
+    color: #536471;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .feed-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .feed-header {
+        font-size: 20px;
+    }
+
+    .feed-card {
+        padding: 15px;
+    }
+
+    .user-name {
+        font-size: 18px;
+    }
+
+    .time-ago {
+        font-size: 14px;
+    }
+
+    .feed-text {
+        font-size: 18px;
+    }
+
+    .comment-count {
+        font-size: 14px;
+    }
+}
