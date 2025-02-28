@@ -162,6 +162,7 @@ function sendStockDetail(stockId) {
     addHiddenInput("prdy", prdy);
     addHiddenInput("vol", vol);
     addHiddenInput("approvalKey", approvalKey);
+    addHiddenInput("roomId", roomId);
 
     // body에 form 추가 후 submit
     document.body.appendChild(form);

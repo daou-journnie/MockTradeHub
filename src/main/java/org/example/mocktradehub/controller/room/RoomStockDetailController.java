@@ -19,15 +19,15 @@ public class RoomStockDetailController extends HttpServlet {
         String stockTitle = req.getParameter("stockTitle");
         String price = req.getParameter("price");
         String prdy = req.getParameter("prdy");
-        String vol = req.getParameter("vol");
         String approvalKey = req.getParameter("approvalKey");
+        String roomId = req.getParameter("roomId");
 
         req.setAttribute("stockId", stockId);
         req.setAttribute("stockTitle", stockTitle);
         req.setAttribute("price", price);
         req.setAttribute("prdy", prdy);
-        req.setAttribute("vol", vol);
         req.setAttribute("approvalKey", approvalKey);
+        req.setAttribute("roomId", roomId);
 
         RequestDispatcher rd = req.getRequestDispatcher("../stockDetail.jsp");
         rd.forward(req, resp);

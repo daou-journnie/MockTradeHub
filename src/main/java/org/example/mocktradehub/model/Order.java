@@ -2,7 +2,7 @@ package org.example.mocktradehub.model;
 
 public class Order {
     private int orderId;
-    private String roomMemberId;      // ORDERS.ROOM_MEMBER_ID
+    private int roomMemberId;      // ORDERS.ROOM_MEMBER_ID
     private int roomID;
     private String orderType;      // 'BUY' 또는 'SELL'
     private int orderTotalQuantity;
@@ -17,10 +17,10 @@ public class Order {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-    public String getRoomMemberId() {
+    public int getRoomMemberId() {
         return roomMemberId;
     }
-    public void setRoomMemberId(String roomMemberId) {
+    public void setRoomMemberId(int roomMemberId) {
         this.roomMemberId = roomMemberId;
     }
 

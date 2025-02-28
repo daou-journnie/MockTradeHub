@@ -5,14 +5,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.model.Order;
 
 public class OrderDAO {
-    private SqlSessionFactory sqlSessionFactory;
+    private SqlSession session;
 
-    public OrderDAO(SqlSessionFactory factory) {
-        this.sqlSessionFactory = factory;
+    public OrderDAO() {
     }
 
-    public int insertOrder(Order order) {
-        SqlSession session = sqlSessionFactory.openSession();
+    public int insertOrder(SqlSession session, Order order) {
         int result = 0;
         try {
             result = session.insert("OrderMapper.insertOrder", order);
@@ -25,8 +23,7 @@ public class OrderDAO {
         return result;
     }
 
-    public Order selectOrderById(int id) {
-        SqlSession session = sqlSessionFactory.openSession();
+    public Order selectOrderById(SqlSession session, int id) {
         Order order = null;
         try {
             order = session.selectOne("OrderMapper.selectOrderByIdToPost", id);
@@ -36,5 +33,19 @@ public class OrderDAO {
             session.close();
         }
         return order;
+    }
+
+    public int countTotalQuantity(SqlSession session, Order order) {
+        int total = 0;
+
+        try {
+            total = session.selectOne("OrderMapper.countTotalQuantityByRoomMemberIdAndStockId", order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return total;
     }
 }

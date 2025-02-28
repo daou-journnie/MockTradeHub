@@ -32,4 +32,11 @@
         FROM ORDERS
         WHERE order_id = #{id}
     </select>
+
+    <select id="countTotalQuantityByRoomMemberIdAndStockId" parameterType="Order" resultType="int">
+        SELECT SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)) AS total_quantity
+        FROM ORDERS
+        WHERE room_member_id = #{roomMemberId}
+        AND stock_id = #{stockId}
+    </select>
 </mapper>

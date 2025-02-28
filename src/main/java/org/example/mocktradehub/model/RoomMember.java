@@ -18,6 +18,10 @@ public class RoomMember {
     private Date roomEndDate;
     private Date roomJoinedAt;
 
+
+    public RoomMember() {
+    }
+
     public RoomMember(String memberId, int roomMemberBalance, String roomCode, String roomName, String roomStatus, String roomDescription, int roomIsPublic) {
         this.memberId = memberId;
         this.roomMemberBalance = roomMemberBalance;
@@ -138,5 +142,13 @@ public class RoomMember {
 
     public void setRoomJoinedAt(Date roomJoinedAt) {
         this.roomJoinedAt = roomJoinedAt;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 }

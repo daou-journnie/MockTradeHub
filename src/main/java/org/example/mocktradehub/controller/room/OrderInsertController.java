@@ -1,14 +1,16 @@
 package org.example.mocktradehub.controller.room;
 
 import org.example.mocktradehub.model.Order;
+import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.service.OrderService;
+import org.example.mocktradehub.service.RoomMemberService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/room/*/order")
+@WebServlet("/room/order")
 public class OrderInsertController extends HttpServlet {
     private OrderService orderService = new OrderService();
 
@@ -17,19 +19,20 @@ public class OrderInsertController extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        // URL에서 roomId 추출
-        String roomIdStr = extractRoomId(request);
-        if (roomIdStr == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid roomId");
-            return;
-        }
-        int roomId = Integer.parseInt(roomIdStr);
+        HttpSession session = request.getSession();
+        String memberId = (String) session.getAttribute("id");
+        int roomId = Integer.parseInt(request.getParameter("roomId"));
 
-        // 주문 정보 파라미터 읽기
-        String roomMemberId = request.getParameter("roomMemberId");
+        RoomMember roomMember = new RoomMember();
+        roomMember.setRoomId(roomId);
+        roomMember.setMemberId(memberId);
+
+        RoomMemberService rmService = new RoomMemberService();
+
+        int roomMemberId = rmService.getRoomMemberId(roomMember);
         String orderType = request.getParameter("orderType"); // "BUY" 또는 "SELL"
-        int orderTotalQuantity = Integer.parseInt(request.getParameter("orderTotalQuantity"));
-        int orderPrice = Integer.parseInt(request.getParameter("orderPrice"));
+        int orderTotalQuantity = Integer.parseInt(request.getParameter("buyingAmount"));
+        int orderPrice = Integer.parseInt(request.getParameter("realPrice"));
         String stockCode = request.getParameter("stockCode");
 
         // Order 객체 생성
@@ -39,8 +42,6 @@ public class OrderInsertController extends HttpServlet {
         order.setOrderTotalQuantity(orderTotalQuantity);
         order.setOrderPrice(orderPrice);
         order.setStockCode(stockCode);
-        order.setRoomID(roomId);
-        // order_time은 DB 기본값으로 처리됨
 
         boolean isCreated = orderService.createOrder(order);
 
@@ -49,18 +50,5 @@ public class OrderInsertController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String jsonResponse = "{\"success\": " + (isCreated ? "true" : "false") + "}";
         response.getWriter().write(jsonResponse);
-    }
-
-    // URL에서 /room/{roomId}/order 형식에서 roomId 추출
-    private String extractRoomId(HttpServletRequest request) {
-        String uri = request.getRequestURI(); // 예: /YourContext/room/123/order
-        String contextPath = request.getContextPath(); // 예: /YourContext
-        String path = uri.substring(contextPath.length()); // /room/123/order
-        int startIndex = path.indexOf("/room/") + 6; // position after "/room/"
-        int endIndex = path.lastIndexOf("/order");
-        if (startIndex < 6 || endIndex <= startIndex) {
-            return null;
-        }
-        return path.substring(startIndex, endIndex);
     }
 }

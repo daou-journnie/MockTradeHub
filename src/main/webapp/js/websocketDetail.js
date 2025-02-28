@@ -101,6 +101,7 @@ socket.onmessage = function(event) {
                 var prdyElement = document.getElementById("prdy-" + stockCode);
                 var prdyText = prdyVrss.toLocaleString() + "원 (" + prdyCtrt + "%)";
                 var amount = parseFloat(document.getElementById("buyingAmount").value);
+                var realPrice = document.getElementById("realPrice");
                 var expectedTotal = document.getElementById("expectedTotal");
 
                 if (sign == 1 || sign == 2) {
@@ -109,6 +110,7 @@ socket.onmessage = function(event) {
                 } else if (sign == 4 || sign == 5) {
                     prdyElement.classList.add("negative");
                 }
+                realPrice.values(currentPrice);
                 priceElement.innerText = currentPrice.toLocaleString() + "원";
                 prdyElement.innerText = prdyText;
                 var total = amount * highestPrice;
@@ -133,4 +135,34 @@ $("#buyingAmount").on("input", function() {
     var amount = parseFloat($(this).val());
     var total = amount * highestPrice;
     document.getElementById("expectedTotal").innerText = "최대 " + total.toLocaleString() + "원"
+});
+
+$(document).ready(function() {
+    $("#buyBtn, #sellBtn").click(function(event) {
+        event.preventDefault(); // 폼 기본 제출 방지
+
+        let orderType = $(this).attr("id") === "buyBtn" ? "BUY" : "SELL";
+        let buyingAmount = $("#buyingAmount").val();
+        let realPrice = $("#realPrice").val();
+        let roomId = $("#roomId").val();
+
+        $.ajax({
+            url: "/room/stockDetail",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                orderType: orderType,
+                buyingAmount: buyingAmount,
+                realPrice: realPrice,
+                roomId: roomId
+            }),
+            success: function(response) {
+                alert("주문이 성공적으로 처리되었습니다.");
+            },
+            error: function(xhr, status, error) {
+                alert("주문 처리 중 오류가 발생했습니다.");
+                console.error(error);
+            }
+        });
+    });
 });

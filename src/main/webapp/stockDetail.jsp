@@ -19,30 +19,32 @@
     String stockTitle = (String) request.getAttribute("stockTitle");
     String price = (String) request.getAttribute("price");
     String prdy = (String) request.getAttribute("prdy");
-    String vol = (String) request.getAttribute("vol");
+    int roomId = (int) request.getAttribute("roomId");
 %>
     <div id="stockInfo">
         <h3><%= stockTitle + "(" + stockId + ")"%></h3>
         <span class="price" id=<%= "price-" + stockId%>><%= price %></span>
         <span id=<%= "prdy-" + stockId%>><%= prdy %></span>
     </div>
-
-        <div id="buy-section">
-            <form>
-                <h4>주문하기</h4>
-                <label>수량</label>
-                <input id="buyingAmount" type="number" name="buyingAmount" value="0" min="0"/>
-                <hr>
-                <div class="totalPrice">
-                    <span class="left-text">구매가능 금액</span>
-                    <span class="right-text">0원</span>
-                </div>
-                <div class="totalPrice">
-                    <span class="left-text">예상 총 주문 금액</span>
-                    <span class="right-text" id="expectedTotal">최대 0원</span>
-                </div>
-                <button>구매</button>
-            </form>
-        </div>
+    <div id="buy-section">
+        <form>
+            <h4>주문하기</h4>
+            <label>수량</label>
+            <input id="buyingAmount" type="number" name="buyingAmount" value="0" min="0"/>
+            <hr>
+            <div class="totalPrice">
+                <span class="left-text">구매가능 금액</span>
+                <span class="right-text">0원</span>
+            </div>
+            <div class="totalPrice">
+                <span class="left-text">예상 총 주문 금액</span>
+                <span class="right-text" id="expectedTotal">최대 0원</span>
+            </div>
+            <input name="realPrice" type="hidden" id="realPrice" value="<%= price %>"/>
+            <input name="roomId" type="hidden" id="roomId" value="<%= roomId %>"/>
+            <button id="buyBtn">매수</button>
+            <button id="sellBtn">매도</button>
+        </form>
+    </div>
 </body>
 </html>
