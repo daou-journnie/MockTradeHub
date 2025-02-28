@@ -21,6 +21,6 @@
         SELECT *
         FROM POSTS
         WHERE ROOM_ID = #{roomId}
-        ORDER BY POST_CREATED_AT ASC
+        ORDER BY POST_CREATED_AT DESC
     </select>
 </mapper>

@@ -1,6 +1,8 @@
 package org.example.mocktradehub.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Post {
     private int postId;
@@ -10,6 +12,16 @@ public class Post {
     private int roomId;
     private String memberId;
     private String memberNickname;
+    // 댓글 저장할 필드 추가 (계층 구조를 위해)
+    private List<Post> comments = new ArrayList<>();
+
+    public List<Post> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Post> comments) {
+        this.comments = comments;
+    }
 
     // Getters and Setters
     public int getPostId() {
