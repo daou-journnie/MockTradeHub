@@ -47,6 +47,6 @@ function enterRoom(roomId) {
         console.error("유효한 roomId가 없습니다.");
         return;
     }
-    window.location.href = "http://localhost:8080/MockTradeHub_war_exploded/room/dashboard?roomId" + roomId;
+    window.location.href = "http://localhost:8080/MockTradeHub_war_exploded/room/dashboard?roomId=" + roomId;
 
 }

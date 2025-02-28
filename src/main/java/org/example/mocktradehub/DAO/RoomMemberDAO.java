@@ -61,4 +61,16 @@ public class RoomMemberDAO {
 
         return result;
     }
+
+    public int insertRoomMember(SqlSession session, RoomMember roomMember) {
+        int result = 0;
+
+        try {
+            result = session.insert("RoomMemberMapper.insertRoomMember", roomMember);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

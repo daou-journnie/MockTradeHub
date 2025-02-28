@@ -5,32 +5,9 @@ body {
     padding: 0;
     height: 100vh;
     color: #343C6A;
-}
-
-div#stockInfo {
-    width: 300px;
-    background-color: white;
-    border: none;
-    border-radius: 30px;
-    margin: 0 auto; /* div가 화면 중앙에 오도록 */
-    padding: 20px; /* div 내부 여백 추가 */
-}
-
-div#stockInfo h3 {
-    margin-top: 0;
-}
-
-.price {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.negative {
-    color: #1976D2;
-}
-
-.positive {
-    color: #D32F2F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #buy-section {
@@ -39,6 +16,7 @@ div#stockInfo h3 {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h4 {
@@ -76,7 +54,7 @@ hr {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: #333; /* 글씨 색상 */
+    color: #333;
     margin-bottom: 10px;
 }
 
@@ -97,22 +75,60 @@ hr {
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2f7bb5;
-    color: white;
+    padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
 button:hover {
-    background-color: #1c5d86;
+    opacity: 0.9;
 }
 
 button:active {
+    opacity: 0.8;
+}
+
+#buyBtn {
+    background-color: #2f7bb5;
+    color: white;
+}
+
+#sellBtn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button#buyBtn:hover {
+    background-color: #1c5d86;
+}
+
+button#sellBtn:hover {
+    background-color: #c0392b;
+}
+
+button#buyBtn:active {
     background-color: #1a4c6c;
+}
+
+button#sellBtn:active {
+    background-color: #a93226;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 버튼들을 오른쪽 끝으로 정렬 */
+    gap: 10px; /* 버튼들 간 간격 */
+}
+
+.negative {
+    color: #1976D2;
+}
+
+.positive {
+    color: #D32F2F;
 }

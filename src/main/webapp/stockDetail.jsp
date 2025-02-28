@@ -35,6 +35,7 @@
             <span class="price" id=<%= "price-" + stockCode%>><%= price %></span>
             <span id=<%= "prdy-" + stockCode%>><%= prdy %></span>
         </div>
+        <hr>
         <form>
             <h4>주문하기</h4>
             <label>수량</label>
@@ -48,14 +49,17 @@
                 <span class="left-text">보유 수량</span>
                 <span id="totalStocks" class="right-text"><%= formattedQuantity %>주</span>
             </div>
+            <hr>
             <div class="totalPrice">
-                <span class="left-text">예상 총 주문 금액</span>
+                <span class="left-text">예상 거래 금액</span>
                 <span class="right-text" id="expectedTotal">최대 0원</span>
             </div>
             <input name="realPrice" type="hidden" id="realPrice" value="<%= price %>"/>
             <input name="roomId" type="hidden" id="roomId" value="<%= roomId %>"/>
-            <button id="buyBtn">매수</button>
-            <button id="sellBtn">매도</button>
+            <div class="button-container">
+                <button id="buyBtn">매수</button>
+                <button id="sellBtn">매도</button>
+            </div>
         </form>
     </div>
 </body>

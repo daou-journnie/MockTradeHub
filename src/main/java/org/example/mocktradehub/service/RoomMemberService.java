@@ -36,4 +36,30 @@ public class RoomMemberService {
         return roomMemberId;
     
     }
+
+    public int createRoomMember(int roomId, String memberId, int initialBalance) {
+        SqlSession session = factory.openSession(false);
+
+        RoomMember roomMember = new RoomMember();
+        roomMember.setRoomId(roomId);
+        roomMember.setMemberId(memberId);
+        roomMember.setRoomMemberBalance(initialBalance);
+
+        try {
+            int roomMemberId = roomMemberDAO.insertRoomMember(session, roomMember);
+            if (roomMemberId > 0) {
+                session.commit();
+                return roomMemberId;
+            } else {
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        } finally {
+            session.close();
+        }
+        return -1;
+
+    }
 }
