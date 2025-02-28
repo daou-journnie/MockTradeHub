@@ -21,6 +21,10 @@
     <typeAliases>
         <typeAlias alias="Member" type="org.example.mocktradehub.model.Member" />
         <typeAlias alias="Room" type="org.example.mocktradehub.model.Room" />
+        <typeAlias alias="Order" type="org.example.mocktradehub.model.Order" />
+        <typeAlias alias="Post" type="org.example.mocktradehub.model.Post" />
+        <typeAlias alias="Stock" type="org.example.mocktradehub.model.Stock" />
+
         <typeAlias alias="RoomMember" type="org.example.mocktradehub.model.RoomMember" />
         <typeAlias alias="Order" type="org.example.mocktradehub.model.Order" />
         <typeAlias alias="Post" type="org.example.mocktradehub.model.Post" />

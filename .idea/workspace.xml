@@ -9,6 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="61c180e4-b97d-4677-a3f1-76e785fc3486" name="변경" comment="하세요">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mocktradehub/DAO/OrderDAO.java" afterDir="false" />
@@ -47,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="roomDashboard-posts" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,6 +67,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="roomDashboard-posts-crycry" />
+                    <option name="lastUsedInstant" value="1740646636" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="room" />
                     <option name="lastUsedInstant" value="1740471683" />
@@ -127,6 +132,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -300,6 +306,7 @@
       <option name="project" value="LOCAL" />
       <updated>1740556341267</updated>
     </task>
+
     <task id="LOCAL-00009" summary="하세요">
       <option name="closed" value="true" />
       <created>1740702950161</created>
@@ -333,6 +340,7 @@
     <MESSAGE value="register 한글 인코딩" />
     <MESSAGE value="room register 생성" />
     <MESSAGE value="체결가 API 연결 및 실시간 차트 화면 구현" />
+
     <MESSAGE value="하세요" />
     <option name="LAST_COMMIT_MESSAGE" value="하세요" />
   </component>
