@@ -1,42 +1,26 @@
 package org.example.mocktradehub.DAO;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.model.Member;
 
 
 public class MemberDAO {
-    private SqlSessionFactory sqlSessionFactory;
 
-    public MemberDAO(SqlSessionFactory factory) {
-        this.sqlSessionFactory = factory;
-    }
+    public MemberDAO() {}
 
-    public Member getMemberById(String id) {
-        SqlSession session = sqlSessionFactory.openSession();
-        Member member = null;
-        try {
-            member = session.selectOne("MemberMapper.getMemberById", id);
-        } finally {
-            session.close();
-        }
-        return member;
+    public Member getMemberById(SqlSession session, String id) {
+        return session.selectOne("MemberMapper.getMemberById", id);
     }
 
 
-    public int insertMember(Member member) {
-        SqlSession session = sqlSessionFactory.openSession();
-        int result = 0;
-        try {
-            result = session.insert("MemberMapper.insertMember", member);
-            session.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return result;
+
+    public int insertMember(SqlSession session, Member member) {
+        return session.insert("MemberMapper.insertMember", member);
     }
 
+
+    public Member getMemberByNickname(SqlSession session, String memberNickname) {
+        return session.selectOne("MemberMapper.getMemberByNickname", memberNickname);
+    }
 
 }
