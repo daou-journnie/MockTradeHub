@@ -48,6 +48,7 @@
         <mapper resource="./sqlMapper/Post.xml"/>
         <mapper resource="./sqlMapper/Order.xml"/>
         <mapper resource="./sqlMapper/Stock.xml"/>
+
     </mappers>
 
 </configuration>

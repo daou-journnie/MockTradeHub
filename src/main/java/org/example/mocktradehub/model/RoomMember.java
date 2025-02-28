@@ -19,12 +19,12 @@ public class RoomMember {
     private Date roomEndDate;
     private Date roomJoinedAt;
 
-
     public RoomMember() {
     }
 
     public RoomMember(int roomMemberId, String memberId, int roomMemberBalance, String roomCode, String roomName, String roomStatus, String roomDescription, int roomIsPublic) {
         this.roomMemberId = roomMemberId;
+
         this.memberId = memberId;
         this.roomMemberBalance = roomMemberBalance;
         this.roomCode = roomCode;
@@ -33,7 +33,7 @@ public class RoomMember {
         this.roomDescription = roomDescription;
         this.roomIsPublic = roomIsPublic;
     }
-
+   
     public int getRoomMemberBalance() {
         return roomMemberBalance;
     }

@@ -28,4 +28,5 @@
         SET room_member_balance = #{roomMemberBalance}
         WHERE room_member_id = #{roomMemberId}
     </update>
+
 </mapper>
