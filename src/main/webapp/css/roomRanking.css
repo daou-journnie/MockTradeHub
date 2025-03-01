@@ -1,0 +1,141 @@
+
+.rank-section {
+    flex: 1;
+    max-width: 600px;
+}
+.rank-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    height: 700px;
+}
+
+.rank-header {
+    color: #343c6a;
+    font-family: sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+
+.ranking-title {
+    color: rgba(52, 60, 106, 1);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.rank-list {
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 10px;
+    min-height: 940px;
+    width: 100%;
+    padding: 20px 20px 855px;
+}
+
+.rank-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rank-content {
+    align-self: stretch;
+    display: flex;
+    min-width: 240px;
+    margin: auto 0;
+    width: 100%;
+    align-items: center;
+    gap: 40px 100px;
+    justify-content: space-between;
+    flex: 1 1 0%;
+}
+
+.user-info {
+    align-self: stretch;
+    display: flex;
+    margin: auto 0;
+    align-items: center;
+    gap: 20px;
+    font-size: 24px;
+    justify-content: start;
+    width: 208px;
+}
+
+.rank-position {
+    align-self: stretch;
+    display: flex;
+    margin: auto 0;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 75, 74, 1);
+    font-weight: 800;
+    line-height: 1;
+    justify-content: start;
+}
+
+.position-number {
+    align-self: stretch;
+    margin: auto 0;
+}
+
+.profile-image {
+    margin: 0;
+}
+
+.profile-picture {
+    aspect-ratio: 0.94;
+    object-fit: contain;
+    object-position: center;
+    width: 60px;
+    align-self: stretch;
+    margin: auto 0;
+    flex-shrink: 0;
+}
+
+.user-name {
+    align-self: stretch;
+    margin: auto 0;
+    color: rgba(35, 35, 35, 1);
+    font-weight: 600;
+}
+
+.performance-metrics {
+    align-self: stretch;
+    display: flex;
+    min-height: 51px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 58px;
+    margin: auto 10px auto 0;
+}
+
+.percentage-change {
+    color: rgba(35, 35, 35, 1);
+    font-size: 18px;
+    font-weight: 500;
+    text-align: right;
+    margin: 0;
+}
+
+.amount {
+    color: rgba(113, 142, 191, 1);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 7px 0 0;
+}
+
+@media (max-width: 991px) {
+    .rank-section {
+        width: 100%;
+    }
+}

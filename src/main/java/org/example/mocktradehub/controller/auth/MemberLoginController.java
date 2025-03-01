@@ -28,6 +28,7 @@ public class MemberLoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("id", id);
             response.sendRedirect(request.getContextPath() +"/mainDashboard.jsp");
+
         } else {
             request.setAttribute("error", "로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
             request.getRequestDispatcher("/login.jsp").forward(request, response);

@@ -1,28 +1,49 @@
+.bg-red {
+    background-color: rgba(255, 99, 132, 0.1); /* 연한 빨강 */
+}
+.bg-blue {
+    background-color: rgba(54, 162, 235, 0.1); /* 연한 파랑 */
+}
+.bg-green {
+    background-color: rgba(75, 192, 192, 0.1); /* 연한 초록 */
+}
+.bg-yellow {
+    background-color: rgba(255, 206, 86, 0.1); /* 연한 노랑 */
+}
+.bg-purple {
+    background-color: rgba(153, 102, 255, 0.1); /* 연한 보라 */
+}
+
 .feed-section {
     flex: 1;
-    max-width: 465px;
+    max-width: 600px;
 }
 
 .feed-header {
     color: #343c6a;
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
+    font-family: sans-serif;
+    font-size: 40px;
+    font-weight: 800;
     margin-bottom: 10px;
 }
 
 .feed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background-color: #fff;
     border-radius: 25px;
     padding: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    height: 700px;
 }
 
 
 .feed-card {
     border-radius: 25px;
     padding: 25px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 .feed-content {
@@ -107,4 +128,28 @@
     .comment-count {
         font-size: 14px;
     }
+}
+
+.comment-section {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.comment {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.comment:last-child {
+    border-bottom: none;
 }
