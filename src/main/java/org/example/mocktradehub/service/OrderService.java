@@ -127,6 +127,27 @@ public class OrderService {
         return orderDAO.selectOrderById(session, orderId);
     }
 
+
+    // 총 평가액(보유 주식 평가금) 조회 서비스 메서드
+    public int getTotalEvaluation(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        int totalEvaluation = 0;
+        try {
+            totalEvaluation = orderDAO.getTotalEvaluationByRoomMemberId(session, roomMemberId);
+        } finally {
+            session.close();
+        }
+        return totalEvaluation;
+    }
+
+    public List<Order> getOrderList(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        List<Order> orders = null;
+        // 보유주식 리스트 받아오기
+        orders = orderDAO.selectOrdersByRoomMemberId(session, roomMemberId);
+        return orders;
+    }
+
     public List<Portfolio> getPortfolioList(int roomMemberId) {
         SqlSession session = factory.openSession();
         List<Portfolio> portfolios = null;

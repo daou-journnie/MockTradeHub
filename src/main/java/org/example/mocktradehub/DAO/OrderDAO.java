@@ -69,10 +69,30 @@ public class OrderDAO {
         return stocksList;
     }
 
+    public int getTotalEvaluationByRoomMemberId(SqlSession session, int roomMemberId) {
+        int totalEvaluation = 0;
+        try {
+            totalEvaluation = session.selectOne("OrderMapper.getTotalEvaluationByRoomMemberId", roomMemberId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalEvaluation;
+    }
+
+    public List<Order> selectOrdersByRoomMemberId(SqlSession session, int roomMemberId) {
+        List<Order> orders = null;
+        try {
+            orders = session.selectList("OrderMapper.selectOrdersByRoomMemberId", roomMemberId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
     public List<Portfolio> selectPortfoliosByRoomMemberId(SqlSession session, int roomMemberId) {
         List<Portfolio> portfolios = null;
         try {
-            portfolios = session.selectList("PortfolioMapper.selectPortfoliosByRoomMemberId", roomMemberId);
+            portfolios = session.selectList("OrderMapper.selectPortfoliosByRoomMemberId", roomMemberId);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -45,36 +45,62 @@
           AND stock_code = #{stockCode}
     </select>
 
-    <select id="getPostsByRoomId" resultType="Portfolio" parameterType="int">
-        SELECT
-        s.stock_name        AS stockName,         -- 종목명
-        CASE
-        WHEN sub.holding_quantity <> 0
-        THEN ROUND(sub.total_price / sub.holding_quantity)
-        ELSE 0
-        END                 AS averagePrice,      -- 1주 평균금액
-        s.STOCK_CLOSING_PRICE     AS currentPrice,      -- 현재가 (STOCKS 테이블을 참조)
-        sub.holding_quantity AS holdingQuantity,  -- 보유수량
-        s.STOCK_CLOSING_PRICE * sub.holding_quantity AS evaluationValue,  -- 평가금 = 현재가 * 보유수량
-        sub.total_price     AS principal,         -- 원금 (누적 매입금액)
-        CASE
-        WHEN sub.total_price <> 0
-        THEN ROUND(((s.STOCK_CLOSING_PRICE * sub.holding_quantity - sub.total_price) / sub.total_price) * 100, 2)
-        ELSE 0
-        END                 AS totalProfitRate,   -- 총 수익률 (%)
-        sub.room_member_id  AS roomMemberId       -- 방 멤버 아이디
+    <select id="getTotalEvaluationByRoomMemberId" resultType="int" parameterType="int">
+    <![CDATA[
+        SELECT NVL(SUM(s.STOCK_CLOSING_PRICE * sub.holding_quantity), 0) AS totalEvaluation
         FROM (
+                 SELECT
+                     room_member_id,
+                     stock_code,
+                     NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)), 0) AS holding_quantity
+                 FROM ORDERS
+                 WHERE room_member_id = #{roomMemberId}
+                 GROUP BY room_member_id, stock_code
+             ) sub
+                 JOIN STOCKS s ON sub.stock_code = s.stock_code
+        ]]>
+</select>
+
+    <select id="selectOrdersByRoomMemberId" resultType="Order" parameterType="int">
+        SELECT O.*, S.STOCK_NAME
+        FROM ORDERS O, STOCKS S
+        WHERE O.STOCK_CODE = S.STOCK_CODE AND room_member_id = #{roomMemberId}
+        ORDER BY ORDER_TIME DESC
+    </select>
+
+
+    <select id="selectPortfoliosByRoomMemberId" resultType="Portfolio" parameterType="int">
+        <![CDATA[
         SELECT
-        room_member_id,
-        stock_code,
-        NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)), 0) AS holding_quantity,
-        NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1) * order_price), 0) AS total_price
-        FROM ORDERS
-        WHERE room_member_id = #{roomMemberId}  -- 원하는 방 멤버 아이디 바인딩 (예: 1)
-        GROUP BY room_member_id, stock_code
-        ) sub
-        JOIN STOCKS s
-        ON sub.stock_code = s.stock_code
+            s.stock_name        AS stockName,         -- 종목명
+            CASE
+                WHEN sub.holding_quantity <> 0
+                    THEN ROUND(sub.total_price / sub.holding_quantity)
+                ELSE 0
+                END                 AS averagePrice,      -- 1주 평균금액
+            s.STOCK_CLOSING_PRICE     AS currentPrice,      -- 현재가 (STOCKS 테이블을 참조)
+            sub.holding_quantity AS holdingQuantity,  -- 보유수량
+            s.STOCK_CLOSING_PRICE * sub.holding_quantity AS evaluationValue,  -- 평가금 = 현재가 * 보유수량
+            sub.total_price     AS principal,         -- 원금 (누적 매입금액)
+            CASE
+                WHEN sub.total_price <> 0
+                    THEN ROUND(((s.STOCK_CLOSING_PRICE * sub.holding_quantity - sub.total_price) / sub.total_price) * 100, 2)
+                ELSE 0
+                END                 AS totalProfitRate,   -- 총 수익률 (%)
+            sub.room_member_id  AS roomMemberId       -- 방 멤버 아이디
+        FROM (
+                 SELECT
+                     room_member_id,
+                     stock_code,
+                     NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)), 0) AS holding_quantity,
+                     NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1) * order_price), 0) AS total_price
+                 FROM ORDERS
+                 WHERE room_member_id = #{roomMemberId}  -- 원하는 방 멤버 아이디 바인딩 (예: 1)
+                 GROUP BY room_member_id, stock_code
+             ) sub
+                 JOIN STOCKS s
+                      ON sub.stock_code = s.stock_code
+        ]]>
     </select>
 
 

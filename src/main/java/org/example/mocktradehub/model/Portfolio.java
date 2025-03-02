@@ -1,5 +1,7 @@
 package org.example.mocktradehub.model;
 
+import java.math.BigDecimal;
+
 public class Portfolio {
     // 종목명
     private String stockName;
@@ -14,7 +16,7 @@ public class Portfolio {
     // 원금
     private int principal;
     // 총 수익률 (예: 퍼센트 값, 소수점 포함)
-    private int totalProfitRate;
+    private BigDecimal totalProfitRate;
     // 방 멤버 아이디
     private int roomMemberId;
 
@@ -22,7 +24,7 @@ public class Portfolio {
     }
 
     public Portfolio(String stockName, int averagePrice, int currentPrice, int holdingQuantity,
-                     int evaluationValue, int principal, int totalProfitRate, int roomMemberId) {
+                     int evaluationValue, int principal, BigDecimal totalProfitRate, int roomMemberId) {
         this.stockName = stockName;
         this.averagePrice = averagePrice;
         this.currentPrice = currentPrice;
@@ -81,11 +83,11 @@ public class Portfolio {
         this.principal = principal;
     }
 
-    public int getTotalProfitRate() {
+    public BigDecimal getTotalProfitRate() {
         return totalProfitRate;
     }
 
-    public void setTotalProfitRate(int totalProfitRate) {
+    public void setTotalProfitRate(BigDecimal totalProfitRate) {
         this.totalProfitRate = totalProfitRate;
     }
 

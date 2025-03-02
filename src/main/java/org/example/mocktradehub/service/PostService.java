@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PostService {
+    MemberService memberService = new MemberService();
     private SqlSessionFactory factory;
     private PostDAO postDAO;
     private StockDAO stockDAO;
@@ -34,7 +35,8 @@ public class PostService {
 
     // 특정 방의 포스트 리스트 조회
     public List<Post> getPostsByRoomId(int roomId) {
-        List<Post> posts = postDAO.getPostsByRoomId(roomId);
+        SqlSession session = factory.openSession();
+        List<Post> posts = postDAO.getPostsByRoomId(session, roomId);
         Map<String, Post> postMap = new HashMap<>();
         List<Post> rootPosts = new ArrayList<>();
         for(Post post : posts) {

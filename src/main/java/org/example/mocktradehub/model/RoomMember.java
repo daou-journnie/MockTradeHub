@@ -33,7 +33,11 @@ public class RoomMember {
         this.roomDescription = roomDescription;
         this.roomIsPublic = roomIsPublic;
     }
-   
+
+    public int getRoomMemberId() {
+        return roomMemberId;
+    }
+
     public int getRoomMemberBalance() {
         return roomMemberBalance;
     }
