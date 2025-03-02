@@ -7,9 +7,12 @@ import org.example.mocktradehub.DAO.PostDAO;
 import org.example.mocktradehub.DAO.RoomMemberDAO;
 import org.example.mocktradehub.DAO.StockDAO;
 import org.example.mocktradehub.model.Order;
+import org.example.mocktradehub.model.Portfolio;
 import org.example.mocktradehub.model.Post;
 import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
+
+import java.util.List;
 
 public class OrderService {
     private SqlSessionFactory factory;
@@ -123,5 +126,38 @@ public class OrderService {
         SqlSession session = factory.openSession();
         return orderDAO.selectOrderById(session, orderId);
     }
+
+
+    // 총 평가액(보유 주식 평가금) 조회 서비스 메서드
+    public int getTotalEvaluation(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        int totalEvaluation = 0;
+        try {
+            totalEvaluation = orderDAO.getTotalEvaluationByRoomMemberId(session, roomMemberId);
+        } finally {
+            session.close();
+        }
+        return totalEvaluation;
+    }
+
+    public List<Order> getOrderList(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        List<Order> orders = null;
+        // 보유주식 리스트 받아오기
+        orders = orderDAO.selectOrdersByRoomMemberId(session, roomMemberId);
+        return orders;
+    }
+
+    public List<Portfolio> getPortfolioList(int roomMemberId) {
+        SqlSession session = factory.openSession();
+        List<Portfolio> portfolios = null;
+        // 보유주식 리스트 받아오기
+        portfolios = orderDAO.selectPortfoliosByRoomMemberId(session, roomMemberId);
+        return portfolios;
+    }
+
+
+
+
 
 }

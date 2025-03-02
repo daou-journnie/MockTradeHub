@@ -198,7 +198,7 @@
 <div class="header">
     <div class="logo">
         <!-- 실제 로고 이미지가 있다면 <img src="로고.png" alt="토스증권"> 사용 가능 -->
-        <span>토스증권</span>
+        <span>모모</span>
     </div>
     <button class="close-btn">X</button>
 </div>

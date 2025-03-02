@@ -1,19 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.example.mocktradehub.model.Portfolio" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="css/roomTransactionHistory.css">
-
+    <title>방 대시보드 - 보유 주식</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/roomTransactionInvestment.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
-/>
-<link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet"
-/>
 <div class="stock-holdings">
     <h2 class="stock-holdings__title">보유 주식</h2>
     <div class="stock-holdings__table-wrapper">
@@ -27,24 +24,36 @@
                 <div class="stock-holdings__header-cell">원금</div>
                 <div class="stock-holdings__header-cell">총 수익률</div>
             </div>
-            <div class="stock-holdings__row">
-                <div class="stock-holdings__cell">다우기술</div>
-                <div class="stock-holdings__cell">50000</div>
-                <div class="stock-holdings__cell">60000</div>
-                <div class="stock-holdings__cell">1주</div>
-                <div class="stock-holdings__cell">60000</div>
-                <div class="stock-holdings__cell">50000</div>
-                <div class="stock-holdings__cell">20%</div>
-            </div>
-            <div class="stock-holdings__row">
-                <div class="stock-holdings__cell">다우기술</div>
-                <div class="stock-holdings__cell">50000</div>
-                <div class="stock-holdings__cell">60000</div>
-                <div class="stock-holdings__cell">1주</div>
-                <div class="stock-holdings__cell">60000</div>
-                <div class="stock-holdings__cell">50000</div>
-                <div class="stock-holdings__cell">20%</div>
-            </div>
+            <c:choose>
+                <c:when test="${not empty portfolioList}">
+                    <c:forEach var="portfolio" items="${portfolioList}">
+                        <div class="stock-holdings__row">
+                            <div class="stock-holdings__cell">${portfolio.stockName}</div>
+                            <div class="stock-holdings__cell">
+                                <fmt:formatNumber value="${portfolio.averagePrice}" pattern="#,##0" />원
+                            </div>
+                            <div class="stock-holdings__cell">
+                                <fmt:formatNumber value="${portfolio.currentPrice}" pattern="#,##0" />원
+                            </div>
+                            <div class="stock-holdings__cell">${portfolio.holdingQuantity} 주</div>
+                            <div class="stock-holdings__cell">
+                                <fmt:formatNumber value="${portfolio.evaluationValue}" pattern="#,##0" />원
+                            </div>
+                            <div class="stock-holdings__cell">
+                                <fmt:formatNumber value="${portfolio.principal}" pattern="#,##0" />원
+                            </div>
+                            <div class="stock-holdings__cell">
+                                <fmt:formatNumber value="${portfolio.totalProfitRate}" pattern="#,##0.00" />%
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <div class="stock-holdings__row">
+                        <div class="stock-holdings__cell" style="width:100%;">보유 주식이 없습니다.</div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>

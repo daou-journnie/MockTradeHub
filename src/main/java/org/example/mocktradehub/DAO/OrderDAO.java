@@ -3,6 +3,10 @@ package org.example.mocktradehub.DAO;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.model.Order;
+import org.example.mocktradehub.model.Portfolio;
+import org.example.mocktradehub.model.Stock;
+
+import java.util.List;
 
 public class OrderDAO {
     public OrderDAO() {
@@ -52,5 +56,47 @@ public class OrderDAO {
         }
 
         return total;
+    }
+
+
+    public List<Stock> getStocksListByRoomMemberId(SqlSession session, int roomMemberId) {
+        List<Stock> stocksList = null;
+        try {
+            stocksList = session.selectList("StockMapper.selectStocksByRoomMemberId");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return stocksList;
+    }
+
+    public int getTotalEvaluationByRoomMemberId(SqlSession session, int roomMemberId) {
+        int totalEvaluation = 0;
+        try {
+            totalEvaluation = session.selectOne("OrderMapper.getTotalEvaluationByRoomMemberId", roomMemberId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalEvaluation;
+    }
+
+    public List<Order> selectOrdersByRoomMemberId(SqlSession session, int roomMemberId) {
+        List<Order> orders = null;
+        try {
+            orders = session.selectList("OrderMapper.selectOrdersByRoomMemberId", roomMemberId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
+    public List<Portfolio> selectPortfoliosByRoomMemberId(SqlSession session, int roomMemberId) {
+        List<Portfolio> portfolios = null;
+        try {
+            portfolios = session.selectList("OrderMapper.selectPortfoliosByRoomMemberId", roomMemberId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return portfolios;
+
     }
 }

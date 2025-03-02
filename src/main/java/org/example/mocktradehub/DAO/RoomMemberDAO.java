@@ -11,6 +11,20 @@ public class RoomMemberDAO {
 
     }
 
+    public RoomMember selectRoomMemberByMemberIdAndRoomId(SqlSession session, RoomMember roomMember) {
+        RoomMember currRoomMember = null;
+
+        try {
+            currRoomMember = session.selectOne("RoomMemberMapper.selectRoomMemberByMemberIdAndRoomId", roomMember);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return currRoomMember;
+    }
+
+
+
     public int getBalanceByMemberIdAndRoomId(SqlSession session, RoomMember roomMember) {
         int balance = 0;
 

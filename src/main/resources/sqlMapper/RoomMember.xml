@@ -3,6 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RoomMemberMapper">
+    <select id="selectRoomMemberByMemberIdAndRoomId" parameterType="RoomMember" resultType="RoomMember">
+        SELECT rm.*, r.ROOM_INITIAL_SEED
+        FROM roommembers rm
+                 JOIN rooms r ON rm.ROOM_ID = r.ROOM_ID
+        WHERE rm.MEMBER_ID = #{memberId}
+          AND rm.ROOM_ID = #{roomId}
+    </select>
+
     <select id="selectBalanceByMemberIdAndRoomId" parameterType="RoomMember" resultType="int">
         SELECT room_member_balance
         FROM roommembers

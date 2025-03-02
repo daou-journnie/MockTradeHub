@@ -9,6 +9,8 @@ public class Order {
     private int orderPrice;
     private String orderTime;      // 문자열로 저장 (YYYY-MM-DD HH24:MI:SS)
     private String stockCode;      // 주문한 주식 코드
+    private String stockName;
+
 
     // Getters and Setters
     public int getOrderId() {
@@ -61,5 +63,13 @@ public class Order {
     }
     public void setStockCode(String stockCode) {
         this.stockCode = stockCode;
+    }
+
+    public String getStockName() {
+        return stockName;
+    }
+
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 }

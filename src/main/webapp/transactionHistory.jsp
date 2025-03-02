@@ -12,7 +12,7 @@
     <title>BankDash Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/roomTransactionInvestment.css">
+    <link rel="stylesheet" href="css/roomTransactionHistory.css">
 </head>
 <body>
 <div class="flex overflow-hidden flex-col bg-white">
