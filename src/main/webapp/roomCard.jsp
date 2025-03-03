@@ -17,7 +17,7 @@
                                 <h3 class="room-title">TradeRoom1</h3>
                             </div>
                         </div>
-                        <p class="room-description">간략한 설명</p>
+                        <p class="room-description">투자 정보 공유방</p>
                     </article>
 
                     <!-- Purple Room Card -->
@@ -25,10 +25,10 @@
                         <div class="room-card-header">
                             <div class="room-title-group">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/53e562a15f56bd1254ae7581f7114e2ee658ea62f6db5c737e646f9d53ac6880?placeholderIfAbsent=true&apiKey=74d6b347f88a4ec9b2441d4daff1986f" alt="Room 2" class="room-icon" />
-                                <h3 class="room-title">Room2</h3>
+                                <h3 class="room-title">TradeRoom2</h3>
                             </div>
                         </div>
-                        <p class="room-description light">간략한 설명</p>
+                        <p class="room-description light">테마주 전문</p>
                     </article>
 
                     <!-- Orange Room Card -->
@@ -36,10 +36,10 @@
                         <div class="room-card-header">
                             <div class="room-title-group">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/06d8b2a5d5a789a58090dec7d78d2b83253f567d692b836e37c1fbd6019e71a6?placeholderIfAbsent=true&apiKey=74d6b347f88a4ec9b2441d4daff1986f" alt="Room 3" class="room-icon" />
-                                <h3 class="room-title">Room3</h3>
+                                <h3 class="room-title">TradeRoom3</h3>
                             </div>
                         </div>
-                        <p class="room-description">간략한 설명</p>
+                        <p class="room-description">미국 ETF</p>
                     </article>
                 </div>
 

@@ -29,10 +29,6 @@ function fetchRoomList() {
                         <hr class="entry-divider" />
                     </article>
                 `;
-                // <div className="room-actions">
-                //     <span className="profit-rate ${room.isPublic}">${room.isPublic}</span>
-                //     <button className="action-button">${room.actionText}</button>
-                // </div>
                 roomEntries.append(roomElement);  // 새로운 방 추가
             });
         },
@@ -47,6 +43,5 @@ function enterRoom(roomId) {
         console.error("유효한 roomId가 없습니다.");
         return;
     }
-    window.location.href = "http://localhost:8080/MockTradeHub_war_exploded/room/dashboard?roomId=" + roomId;
-
+    window.location.href = "http://localhost:8080/MockTradeHub_war_exploded/roomDashboard.jsp?roomId=" + roomId;
 }

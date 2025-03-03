@@ -2,7 +2,7 @@
 <header class="flex flex-wrap gap-5 justify-between px-16 py-0.5 w-full bg-white max-md:px-5 max-md:max-w-full">
     <div class="flex gap-2.5 my-auto text-2xl font-black whitespace-nowrap text-slate-700">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d63245a00b59f9e324876521c8dacd55526a616a0845d613143f797a4c6d0d15?placeholderIfAbsent=true&apiKey=74d6b347f88a4ec9b2441d4daff1986f" alt="BankDash Logo" class="object-contain shrink-0 w-9 aspect-square" />
-        <h1 class="basis-auto">MockTradeHub</h1>
+        <h1 class="basis-auto">MoMo</h1>
     </div>
 
     <div class="flex items-center gap-2 text-base text-slate-400">
@@ -17,7 +17,7 @@
                     aria-label="검색"
             >
                 <img
-                        src="assets/search.png"
+                        src="${pageContext.request.contextPath}/assets/search.png"
                         alt="검색"
                         class="absolute w-[100%] h-[100%] object-contain"
                         loading="lazy"
@@ -31,7 +31,7 @@
                     aria-label="로그아웃"
             >
                 <img
-                        src="assets/logout.png"
+                        src="${pageContext.request.contextPath}/assets/logout.png"
                         alt="로그아웃"
                         class="absolute w-[100%] h-[100%] object-contain"
                         loading="lazy"
