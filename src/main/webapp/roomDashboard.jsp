@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     request.setAttribute("currentPage", request.getRequestURI());
+    request.setAttribute("roomId", request.getParameter("roomId"));
 %>
 <!DOCTYPE html>
 <html>
