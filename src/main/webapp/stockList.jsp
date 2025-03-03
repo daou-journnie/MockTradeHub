@@ -1,18 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실시간 주식 가격</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous"></script>
-    <script>
-        var approvalKey = "<%= request.getAttribute("approvalKey") %>";
-        var roomId = "<%= request.getAttribute("roomId") %>";
-    </script>
-    <script src="../js/websocket.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/stocklist.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실시간 주식 가격</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+<script>
+    var approvalKey = "<%= request.getAttribute("approvalKey") %>";
+    var roomId = "<%= request.getAttribute("roomId") %>";
+</script>
+<script src="../js/websocket.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stocklist.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <div id="table-section">
     <div id="tableTitle">

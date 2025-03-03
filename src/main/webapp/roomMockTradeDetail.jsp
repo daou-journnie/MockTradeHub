@@ -12,16 +12,16 @@
     <title>BankDash Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/roomTransactionInvestment.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/roomTransactionInvestment.css">
 </head>
 <body>
-<div class="flex overflow-hidden flex-col bg-white">
+<div class="flex overflow-hidden flex-col bg-white h-full flex-grow">
     <!-- Include Header -->
     <jsp:include page="mainHeader.jsp" />
 
-    <hr class="flex shrink-0 self-end max-w-full h-px bg-slate-200 w-[1190px]" />
+    <hr class="flex shrink-0 self-end max-w-full h-px bg-slate-200 " />
 
-    <div class="flex flex-wrap gap-10 w-full max-md:max-w-full">
+    <div class="flex flex-wrap gap-10 w-full max-md:max-w-full min-h-screen">
         <!-- Include Sidebar -->
         <jsp:include page="roomSidebar.jsp" />
 
@@ -32,10 +32,6 @@
                 <jsp:include page="stockDetail.jsp" />
 
             </div>
-
-
-            <!-- Include Room List -->
-            <%--            <jsp:include page="roomListMember.jsp" />--%>
         </main>
     </div>
 </div>

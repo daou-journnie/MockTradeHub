@@ -31,6 +31,13 @@
           AND room_id = #{roomId}
     </select>
 
+
+    <select id="selectRoomMembersByRoomId" parameterType="int" resultType="RoomMember">
+        SELECT room_member_id, m.member_id, member_nickname, room_member_balance, r.room_initial_seed
+        FROM roommembers rm, members m, rooms r
+        where rm.member_id = m.member_id and rm.room_id = r.room_id and rm.room_id = #{roomId}
+    </select>
+
     <update id="updateBalanceByRoomMemberId" parameterType="RoomMember">
         UPDATE roommembers
         SET room_member_balance = #{roomMemberBalance}

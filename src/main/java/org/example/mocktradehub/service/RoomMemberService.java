@@ -6,6 +6,9 @@ import org.example.mocktradehub.DAO.RoomMemberDAO;
 import org.example.mocktradehub.model.Room;
 import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
+import org.omg.CORBA.UserException;
+
+import java.util.List;
 
 public class RoomMemberService {
 
@@ -23,6 +26,13 @@ public class RoomMemberService {
         return currRoomMember;
     }
 
+    public List<RoomMember> getAllRoomMembers(int roomId) {
+        SqlSession session = factory.openSession();
+        List<RoomMember> roomMembers = roomMemberDAO.selectRoomMembersByRoomId(session, roomId);
+        session.close();
+        return roomMembers;
+    }
+
     public int getBalance(RoomMember roomMember) {
         SqlSession session = factory.openSession();
         int balance = roomMemberDAO.getBalanceByMemberIdAndRoomId(session, roomMember);
@@ -30,12 +40,6 @@ public class RoomMemberService {
         return balance;
     }
 
-    public int getBalance(int roomMemberId) {
-        SqlSession session = factory.openSession();
-        int balance = roomMemberDAO.getBalanceByRoomMemberId(session, roomMemberId);
-        session.close();
-        return balance;
-    }
 
     public int getRoomMemberId(RoomMember roomMember) {
         SqlSession session = factory.openSession();

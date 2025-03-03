@@ -29,7 +29,7 @@ public class RoomListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json");  // 🔹 JSON 응답 설정
+        resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
         // 요청 파라미터에서 `member_id` 가져오기
@@ -41,11 +41,11 @@ public class RoomListController extends HttpServlet {
         }
         System.out.println("member_id: " + member_id);
 
-        // 2️⃣ 해당 멤버의 방 목록 조회
+        // 해당 멤버의 방 목록 조회
         List<RoomMember> rooms = this.roomService.getMyRooms(member_id);
 
 
-        // 3️⃣ JSON 변환 후 응답
+        // JSON 변환 후 응답
         JSONArray jsonArray = new JSONArray();
         for (RoomMember room : rooms) {
             JSONObject jsonRoom = new JSONObject();
@@ -60,18 +60,6 @@ public class RoomListController extends HttpServlet {
         }
 
         resp.getWriter().write(jsonArray.toString());
-        // 로그인 체크 확인 함수 넣으면 좋을 것 같음
-//        HttpSession session = req.getSession(false);
-//        String memberId = null;
-//
-//        if (session != null) {
-//            Member member = (Member) session.getAttribute("member");
-//            if (member != null) {
-//                memberId = member.getMemberId();
-//            }
-//        } else {
-//
-//        }
     }
 
     @Override

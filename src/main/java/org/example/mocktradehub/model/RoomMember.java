@@ -5,6 +5,7 @@ import java.util.Date;
 public class RoomMember {
     private int roomMemberId;
     private String memberId;
+    private String memberNickname;
     private int roomMemberBalance;
     private int roomId;              // 자동 생성 (시퀀스)
     private String roomCode;
@@ -19,12 +20,19 @@ public class RoomMember {
     private Date roomEndDate;
     private Date roomJoinedAt;
 
+    public String getMemberNickname() {
+        return memberNickname;
+    }
+
+    public void setMemberNickname(String memberNickname) {
+        this.memberNickname = memberNickname;
+    }
+
     public RoomMember() {
     }
 
     public RoomMember(int roomMemberId, String memberId, int roomMemberBalance, String roomCode, String roomName, String roomStatus, String roomDescription, int roomIsPublic) {
         this.roomMemberId = roomMemberId;
-
         this.memberId = memberId;
         this.roomMemberBalance = roomMemberBalance;
         this.roomCode = roomCode;
@@ -34,6 +42,13 @@ public class RoomMember {
         this.roomIsPublic = roomIsPublic;
     }
 
+    public RoomMember(int roomMemberId, String memberId, String memberNickname, int roomMemberBalance, int roomInitialSeed) {
+        this.roomMemberId = roomMemberId;
+        this.memberId = memberId;
+        this.memberNickname = memberNickname;
+        this.roomMemberBalance = roomMemberBalance;
+        this.roomInitialSeed = roomInitialSeed;
+    }
     public int getRoomMemberId() {
         return roomMemberId;
     }

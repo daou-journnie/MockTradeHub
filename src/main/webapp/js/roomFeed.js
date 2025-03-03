@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    fetchPostList();
+    fetchFeedList();
 });
 
 // AJAX를 이용해 피드 목록을 가져옴 (jQuery `$.ajax()` 사용)
-function fetchPostList() {
+function fetchFeedList() {
     let roomId = $("#room-id").val();
 
 
