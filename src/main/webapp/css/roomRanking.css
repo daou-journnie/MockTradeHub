@@ -127,11 +127,23 @@
     margin: 0;
 }
 
+
+/* 수익률이 음수일 경우 파란색 */
+.percentage-change[data-value^="-"] {
+    color: blue;
+}
+
+/* 수익률이 양수일 경우 빨간색 */
+.percentage-change:not([data-value^="-"]) {
+    color: red;
+}
+
 .amount {
     color: rgba(113, 142, 191, 1);
     font-size: 15px;
     font-weight: 600;
     margin: 7px 0 0;
+    white-space: nowrap;
 }
 
 @media (max-width: 991px) {

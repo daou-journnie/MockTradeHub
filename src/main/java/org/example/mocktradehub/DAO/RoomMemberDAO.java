@@ -3,6 +3,8 @@ package org.example.mocktradehub.DAO;
 import org.apache.ibatis.session.SqlSession;
 import org.example.mocktradehub.model.RoomMember;
 
+import java.util.List;
+
 public class RoomMemberDAO {
     private SqlSession session;
 
@@ -21,6 +23,16 @@ public class RoomMemberDAO {
         }
 
         return currRoomMember;
+    }
+
+    public List<RoomMember> selectRoomMembersByRoomId(SqlSession session, int roomId) {
+        List<RoomMember> roomMembers = null;
+        try {
+            roomMembers = session.selectList("RoomMemberMapper.selectRoomMembersByRoomId", roomId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return roomMembers;
     }
 
 
