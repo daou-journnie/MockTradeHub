@@ -9,7 +9,7 @@
         var stockCode = "<%= request.getAttribute("stockCode") %>"
     </script>
     <script src="../js/websocketDetail.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/stockDetail.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stockDetail.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <%
     String stockCode = (String) request.getAttribute("stockCode");

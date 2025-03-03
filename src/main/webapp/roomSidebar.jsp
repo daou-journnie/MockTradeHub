@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<nav class="self-start mt-3.5 text-lg font-medium">
+<nav class="self-start mt-3.5 text-lg font-noto font-medium">
     <ul class="flex flex-col items-start gap-7 mt-6 w-full max-md:pl-5">
         <!-- 대시보드 -->
         <li class="relative flex w-full ${currentPage.endsWith('roomDashboard.jsp') ? 'text-blue-600' : 'text-zinc-400'}">
@@ -9,7 +9,7 @@
             <c:if test="${currentPage.endsWith('roomDashboard.jsp')}">
                 <div class="absolute left-0 h-full w-1.5 bg-blue-600"></div>
             </c:if>
-            <a href="mainDashboard.jsp" class="flex items-center gap-5 pl-6 w-full hover:text-blue-500 transition-all">
+            <a href="${pageContext.request.contextPath}/roomDashboard.jsp?roomId=${roomId}" class="flex items-center gap-5 pl-6 w-full hover:text-blue-500 transition-all">
                 <svg class="object-contain shrink-0 self-start aspect-square w-[25px] ${currentPage.endsWith('roomDashboard.jsp') ? 'fill-blue-600' : 'fill-zinc-400'}" viewBox="0 0 25 25"  xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_14_918)">
                         <path d="M24.3254 10.8738C24.3248 10.8732 24.3243 10.8727 24.3237 10.8721L14.1257 0.674438C13.691 0.239563 13.1131 0 12.4983 0C11.8836 0 11.3057 0.239372 10.8708 0.674248L0.678111 10.8667C0.674678 10.8702 0.671244 10.8738 0.667811 10.8772C-0.224828 11.775 -0.223302 13.2317 0.672198 14.1272C1.08132 14.5365 1.62168 14.7736 2.19941 14.7984C2.22287 14.8006 2.24652 14.8018 2.27037 14.8018H2.67682V22.3066C2.67682 23.7917 3.88513 25 5.37057 25H9.36036C9.76472 25 10.0928 24.6721 10.0928 24.2676V18.3838C10.0928 17.7061 10.644 17.1549 11.3217 17.1549H13.675C14.3527 17.1549 14.9039 17.7061 14.9039 18.3838V24.2676C14.9039 24.6721 15.2318 25 15.6363 25H19.6261C21.1115 25 22.3198 23.7917 22.3198 22.3066V14.8018H22.6967C23.3113 14.8018 23.8892 14.5624 24.3243 14.1275C25.2207 13.2305 25.2211 11.7714 24.3254 10.8738Z" fill="currentColor"/>
@@ -29,7 +29,7 @@
             <c:if test="${currentPage.endsWith('transactionHistory.jsp')}">
                 <div class="absolute left-0 h-full w-1.5 bg-blue-600"></div>
             </c:if>
-            <a href="#" class="flex items-center gap-5 pl-6 w-full hover:text-blue-500 transition-all">
+            <a href="${pageContext.request.contextPath}/room/transactionHistory?roomId=${roomId}" class="flex items-center gap-5 pl-6 w-full hover:text-blue-500 transition-all">
                 <svg class="object-contain shrink-0 self-start aspect-square w-[25px] ${currentPage.endsWith('transactionHistory.jsp') ? 'fill-blue-600' : 'fill-zinc-400'}" viewBox="0 0 25 25"  xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_14_914)">
                         <path d="M12.3219 12.0426C13.9763 12.0426 15.4089 11.4492 16.5794 10.2785C17.75 9.10793 18.3434 7.67571 18.3434 6.02109C18.3434 4.36705 17.75 2.93463 16.5792 1.76372C15.4085 0.593374 13.9761 0 12.3219 0C10.6672 0 9.235 0.593374 8.06446 1.76391C6.89392 2.93444 6.30035 4.36686 6.30035 6.02109C6.30035 7.67571 6.89392 9.10813 8.06465 10.2787C9.23538 11.449 10.6678 12.0426 12.3219 12.0426Z" fill="currentColor"/>
@@ -44,13 +44,13 @@
                 <span>거래 내역</span>
             </a>
         </li>
-        <li class="relative flex w-full ${currentPage.endsWith('stockList.jsp') ? 'text-blue-600' : 'text-zinc-400'}">
+        <li class="relative flex w-full ${currentPage.endsWith('roomMockTrade.jsp') ? 'text-blue-600' : 'text-zinc-400'}">
 
-            <c:if test="${currentPage.endsWith('stockList.jsp')}">
+            <c:if test="${currentPage.endsWith('roomMockTrade.jsp')}">
                 <div class="absolute left-0 h-full w-1.5 bg-blue-600"></div>
             </c:if>
-            <a href="#" class="flex items-center gap-5 pl-6 w-full">
-                <svg class="object-contain shrink-0 self-start aspect-square w-[25px] ${currentPage.endsWith('stockList.jsp') ? 'fill-blue-600' : 'fill-zinc-400'}" viewBox="0 0 25 25"  xmlns="http://www.w3.org/2000/svg">
+            <a href="${pageContext.request.contextPath}/room/stockChart?roomId=${roomId}" class="flex items-center gap-5 pl-6 w-full">
+                <svg class="object-contain shrink-0 self-start aspect-square w-[25px] ${currentPage.endsWith('roomMockTrade.jsp') ? 'fill-blue-600' : 'fill-zinc-400'}" viewBox="0 0 25 25"  xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_14_903)">
                         <path d="M3.92074 10.2271H1.1367C0.509043 10.2271 0 10.7361 0 11.3638V23.8638C0 24.4909 0.509043 24.9999 1.1367 24.9999H3.92074C4.5484 24.9999 5.05692 24.4909 5.05692 23.8638V11.3638C5.05692 10.7361 4.5484 10.2271 3.92074 10.2271Z" fill="currentColor"/>
                         <path d="M10.5686 13.6357H7.78459C7.1564 13.6357 6.64789 14.1448 6.64789 14.7724V23.8629C6.64789 24.4911 7.1564 24.9996 7.78459 24.9996H10.5686C11.1963 24.9996 11.7048 24.4905 11.7048 23.8629V14.7724C11.7048 14.1448 11.1963 13.6357 10.5686 13.6357Z" fill="currentColor"/>
