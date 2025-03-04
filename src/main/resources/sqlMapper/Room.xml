@@ -9,6 +9,12 @@
         WHERE  RM.ROOM_ID = R.ROOM_ID
         AND RM.MEMBER_ID = #{MEMBER_ID}
     </select>
+
+    <select id="getEndDateById" parameterType="int" resultType="Room">
+        SELECT room_end_date
+        FROM rooms
+        WHERE room_id = #{roomId}
+    </select>
     <!-- 방 생성 -->
     <insert id="insertRoom" parameterType="Room">
         INSERT INTO ROOMS (
