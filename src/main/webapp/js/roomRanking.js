@@ -33,7 +33,7 @@ function fetchRankList() {
                             </div>
                             <div class="performance-metrics">
                                 <p class="percentage-change" data-value="${roomMember.totalProfitRate}">${roomMember.totalProfitRate}%</p>
-                                <p class="amount">${roomMember.balance}원</p>
+                                <p class="amount">${roomMember.totalAsset.toLocaleString()}원</p>
                             </div>
                         </div>
                     </article>

@@ -69,7 +69,7 @@ public class RoomProfitController extends HttpServlet {
             jsonData.put("memberId", roomMember.getMemberId());
             jsonData.put("memberNickname", roomMember.getMemberNickname());
             jsonData.put("totalProfitRate", totalProfitRate);
-            jsonData.put("balance", balance);
+            jsonData.put("totalAsset", totalAsset);
             System.out.println(jsonData);
 
             jsonList.add(jsonData);
