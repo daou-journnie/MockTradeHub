@@ -95,7 +95,7 @@ public class RoomRegisterController extends HttpServlet {
         if (isCreated) {
             this.roomMemberService.createRoomMember(roomId, memberId, roomInitialSeed);
             // 생성된 방의 상세 페이지로 이동: 예시 URL: /room/dashboard?roomId=XXX
-            response.sendRedirect(request.getContextPath() + "/room/dashboard?roomId=" + roomId);
+            response.sendRedirect(request.getContextPath() + "roomDashboard.jsp?roomId=" + roomId);
         } else {
             request.setAttribute("error", "방 생성에 실패했습니다.");
             request.getRequestDispatcher("/roomRegister").forward(request, response);
