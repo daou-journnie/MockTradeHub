@@ -26,14 +26,14 @@
         <jsp:include page="roomSidebar.jsp" />
 
         <!-- Main Content -->
-        <main class="flex flex-col grow shrink-0 pt-20 pb-10 basis-0 bg-slate-100 w-fit max-md:max-w-full">
-            <div class="flex flex-row items-center gap-10 w-full ">
+        <main class="flex flex-col grow shrink-0 pt-5 pb-10 basis-0 bg-slate-100 w-fit max-md:max-w-full">
+            <div class="flex flex-row gap-10 w-full ">
                 <!-- Include Room Feed -->
-                <div class="w-1/2 ml-[10%]">
+                <div class="w-1/2 ml-[5%]">
                     <jsp:include page="roomFeed.jsp" />
                 </div>
                 <!-- Include Room Ranking -->
-                <div class="w-1/2">
+                <div class="w-1/2" mr-[5%]>
                     <jsp:include page="roomRanking.jsp" />
                 </div>
             </div>

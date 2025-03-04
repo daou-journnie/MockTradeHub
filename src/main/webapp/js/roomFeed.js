@@ -2,6 +2,7 @@ $(document).ready(function() {
     fetchFeedList();
 });
 
+
 // AJAX를 이용해 피드 목록을 가져옴 (jQuery `$.ajax()` 사용)
 function fetchFeedList() {
     let roomId = $("#room-id").val();
@@ -55,6 +56,73 @@ function fetchFeedList() {
         }
     });
 }
+
+// 포스트 삽입 함수: 폼 데이터를 수집해 AJAX 요청으로 처리
+function insertPost() {
+    let roomId = $('input[name="roomId"]').val();
+    let memberId = $('input[name="memberId"]').val();
+    let postContent = $('#post-text').val();
+
+    $.ajax({
+        url: 'room/post/insert',
+        type: 'POST',
+        data: {
+            roomId: roomId,
+            memberId: memberId,
+            postContent: postContent
+        },
+        dataType: 'json',
+        success: function(newPost) {
+            console.log("포스트 작성 성공:", newPost);
+            let dateToTimeAgo = '방금 전';
+            console.log(dateToTimeAgo);
+            let colorClass = getColorClass(newPost.memberId);
+            let comments = newPost.postComments || [];
+            let feedElement = `
+                  <article class="feed-card ${colorClass}">
+                      <div class="feed-content">
+                          <header class="feed-top">
+                              <h3 class="user-name">${newPost.memberNickname}</h3>
+                              <time class="time-ago">${dateToTimeAgo}</time>
+                          </header>
+                          <p class="feed-text">${newPost.postContent}</p>
+                          <footer class="feed-stats">
+                              <div onclick="toggleComments(${newPost.postId})">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="comment-icon">
+                                      <path d="M1.75098 10C1.75098 5.58 5.33498 2 9.75598 2H14.122C18.612 2 22.251 5.64 22.251 10.13C22.251 13.09 20.644 15.81 18.055 17.24L10.001 21.7V18.01H9.93398C5.44398 18.11 1.75098 14.5 1.75098 10ZM9.75598 4C6.43898 4 3.75098 6.69 3.75098 10C3.75098 13.37 6.52098 16.08 9.88898 16.01L10.24 16H12.001V18.3L17.088 15.49C19.039 14.41 20.251 12.36 20.251 10.13C20.251 6.74 17.507 4 14.122 4H9.75598Z" fill="#536471"></path>
+                                  </svg>
+                              </div>
+                              <span class="comment-count">${comments.length}</span>
+                          </footer>
+                      </div>
+                      <!-- 댓글 표시 영역 (기본적으로 숨김) -->
+                      <div id="comments-${newPost.postId}" class="comment-section hidden">
+                          ${comments.map(comment => `
+                              <div class="comment">
+                                  <strong>${comment.memberNickname}</strong>: ${comment.postContent}
+                              </div>
+                          `).join("")}
+                      </div>
+                  </article>
+              `;
+            // 피드 컨테이너의 최상단에 새 포스트를 추가
+            $('.feed-container').prepend(feedElement);
+            // textarea 초기화
+            $('#post-text').val('');
+        },
+        error: function(xhr, status, error) {
+            console.error("포스트 작성 실패:", error);
+        }
+    });
+}
+
+// 버튼 클릭 이벤트에 insertPost 함수 연결
+$(document).on('click', '.post-submit-btn', function(e) {
+    console.log("버튼 클릭됨");
+
+    e.preventDefault();
+    insertPost();
+});
 
 
 // 사용 가능한 색상 리스트
