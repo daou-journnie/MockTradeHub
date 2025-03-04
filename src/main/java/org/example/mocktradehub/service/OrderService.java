@@ -2,16 +2,16 @@ package org.example.mocktradehub.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.example.mocktradehub.DAO.OrderDAO;
-import org.example.mocktradehub.DAO.PostDAO;
-import org.example.mocktradehub.DAO.RoomMemberDAO;
-import org.example.mocktradehub.DAO.StockDAO;
+import org.example.mocktradehub.DAO.*;
 import org.example.mocktradehub.model.Order;
 import org.example.mocktradehub.model.Portfolio;
 import org.example.mocktradehub.model.Post;
 import org.example.mocktradehub.model.RoomMember;
 import org.example.mocktradehub.util.MyBatisSessionFactory;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class OrderService {
@@ -72,6 +72,15 @@ public class OrderService {
 
     private String validateOrder(SqlSession session, Order order, String orderType) {
         RoomMemberDAO roomMemberDAO = new RoomMemberDAO();
+        RoomDAO roomDAO = new RoomDAO();
+        Date endDate = roomDAO.getEndDateById(session, order.getRoomID());
+        LocalDate endDateLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate today = LocalDate.now();
+
+        if (today.isAfter(endDateLocalDate)) {
+            return "만료된 방입니다.";
+        }
+
         if (order.getOrderPrice() <= 0) {
             return "수량을 입력하세요";
         }
@@ -135,7 +144,7 @@ public class OrderService {
     // 총 평가액(보유 주식 평가금) 조회 서비스 메서드
     public int getTotalEvaluation(int roomMemberId) {
         SqlSession session = factory.openSession();
-        int totalEvaluation = 0;
+        int totalEvaluation;
         try {
             totalEvaluation = orderDAO.getTotalEvaluationByRoomMemberId(session, roomMemberId);
         } finally {

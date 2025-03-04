@@ -1,33 +1,32 @@
 package org.example.mocktradehub.DAO;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.mocktradehub.model.Room;
 import org.example.mocktradehub.model.RoomMember;
 
+import java.util.Date;
 import java.util.List;
 
 public class RoomDAO {
-    private SqlSession sqlSession;
-
 
     public RoomDAO() {}
 
 
-    public void setSqlSession(SqlSession sqlSession) {
-        this.sqlSession = sqlSession;
-    }
-
     // 방 생성
-    public int insertRoom(Room room) {
-       return this.sqlSession.insert("RoomMapper.insertRoom", room);
+    public int insertRoom(SqlSession session, Room room) {
+       return session.insert("RoomMapper.insertRoom", room);
     }
 
     // 멤버별 방 조회
-    public List<RoomMember> getMyRooms(String member_id) {
+    public List<RoomMember> getMyRooms(SqlSession session, String member_id) {
         System.out.println("RoomDAO.getMyRooms meber_id= "+member_id);
-        List<RoomMember> roomMembers =  this.sqlSession.selectList("RoomMapper.getMyRooms", member_id);
+        List<RoomMember> roomMembers =  session.selectList("RoomMapper.getMyRooms", member_id);
         System.out.println(roomMembers);
         return roomMembers;
+    }
+
+    public Date getEndDateById(SqlSession session, int roomId) {
+        Room room = session.selectOne("RoomMapper.getEndDateById", roomId);
+        return room.getRoomEndDate();
     }
 }

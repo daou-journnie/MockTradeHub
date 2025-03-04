@@ -40,10 +40,9 @@ public class RoomService {
         // 방 코드 생성
         room.setRoomCode(CodeGenerator.generateRoomCode(8));
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        this.roomDAO.setSqlSession(sqlSession);
 
         try {
-            int roomId = this.roomDAO.insertRoom(room);
+            int roomId = roomDAO.insertRoom(sqlSession, room);
             if (roomId > 0) {
                 sqlSession.commit();
                 return roomId;
@@ -60,11 +59,11 @@ public class RoomService {
     public List<RoomMember> getMyRooms(String member_id) {
         System.out.println("service getMyRooms");
         SqlSession sqlSession = this.sqlSessionFactory.openSession();
-        this.roomDAO.setSqlSession(sqlSession);
+
         List<RoomMember> rooms = null;
         try {
             System.out.println("service getMyRooms try");
-            rooms = this.roomDAO.getMyRooms(member_id);
+            rooms = this.roomDAO.getMyRooms(sqlSession, member_id);
             if (rooms != null) {
                 return rooms;
             }
