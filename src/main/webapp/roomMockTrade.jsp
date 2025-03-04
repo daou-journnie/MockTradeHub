@@ -3,6 +3,7 @@
 <%
     request.setAttribute("currentPage", request.getRequestURI());
     request.setAttribute("roomId", request.getParameter("roomId"));
+    request.setAttribute("stockPrice", request.getAttribute("stockPrice"));
 %>
 <!DOCTYPE html>
 <html>
