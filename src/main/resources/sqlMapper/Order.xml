@@ -95,7 +95,7 @@
                      NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1)), 0) AS holding_quantity,
                      NVL(SUM(order_total_quantity * DECODE(order_type, 'SELL', -1, 1) * order_price), 0) AS total_price
                  FROM ORDERS
-                 WHERE room_member_id = #{roomMemberId}  -- 원하는 방 멤버 아이디 바인딩 (예: 1)
+                 WHERE room_member_id = #{roomMemberId} and holding_quantity != 0
                  GROUP BY room_member_id, stock_code
              ) sub
                  JOIN STOCKS s
