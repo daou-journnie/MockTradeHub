@@ -45,7 +45,14 @@ function fetchFeedList() {
                                     <strong>${comment.memberNickname}</strong>: ${comment.postContent}
                                 </div>
                             `).join("")}
+                            
+                            <!-- 댓글 입력 폼 -->
+                        <div class="comment-form">
+                            <textarea id="comment-text-${post.postId}" class="comment-textarea" placeholder="댓글 입력..." rows="2"></textarea>
+                            <button type="button" onclick="insertComment(${post.postId})" class="comment-submit-btn">댓글 작성</button>
                         </div>
+                        </div>
+                        
                     </article>
                 `;
                 feedEntries.append(feedElement);
@@ -115,6 +122,41 @@ function insertPost() {
         }
     });
 }
+
+function insertComment(parentPostId) {
+    let roomId = $('input[name="roomId"]').val();
+    let memberId = $('input[name="memberId"]').val();
+    let commentContent = $(`#comment-text-${parentPostId}`).val();
+
+    $.ajax({
+        url: 'room/post/insert',
+        type: 'POST',
+        data: {
+            roomId: roomId,
+            memberId: memberId,
+            postContent: commentContent,
+            postParentId: parentPostId  // 부모 포스트 ID 전달
+        },
+        dataType: 'json',
+        success: function(newComment) {
+            console.log("댓글 작성 성공:", newComment);
+            // 댓글 요소 생성
+            let commentElement = `
+                <div class="comment">
+                    <strong>${newComment.memberNickname}</strong>: ${newComment.postContent}
+                </div>
+            `;
+            // 해당 부모 포스트의 댓글 영역에 댓글 추가
+            $(`#comments-${parentPostId}`).append(commentElement);
+            // 댓글 입력 필드 초기화
+            $(`#comment-text-${parentPostId}`).val('');
+        },
+        error: function(xhr, status, error) {
+            console.error("댓글 작성 실패:", error);
+        }
+    });
+}
+
 
 // 버튼 클릭 이벤트에 insertPost 함수 연결
 $(document).on('click', '.post-submit-btn', function(e) {

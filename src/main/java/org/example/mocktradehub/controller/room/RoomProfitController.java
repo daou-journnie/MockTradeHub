@@ -77,7 +77,7 @@ public class RoomProfitController extends HttpServlet {
         System.out.println(jsonList);
 
         // 수익율 순으로 정렬
-        jsonList.sort((o1, o2) -> Integer.compare(o2.getInt("totalProfitRate"), o1.getInt("totalProfitRate")));
+        jsonList.sort((o1, o2) -> Integer.compare(o2.getInt("totalAsset"), o1.getInt("totalAsset")));
 
         System.out.println("여기까지 오니");
         JSONArray jsonArray = new JSONArray(jsonList);
