@@ -21,21 +21,21 @@ public class MemberService {
         }
     }
 
-    public boolean login(String id, String pw) {
+    public Member login(String id, String pw) {
         try (SqlSession session = factory.openSession()) {
             System.out.println("Service : " + id + " : " + pw);
             Member member = memberDAO.getMemberById(session, id);
             if (member != null && member.getMemberPassword().equals(pw)) {
-                return true;
+                return member;
             }
-            return false;
+            return null;
         } catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("일치하는 아이디 없음");
-            return false;
+            return null;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            return null;
         }
     }
 

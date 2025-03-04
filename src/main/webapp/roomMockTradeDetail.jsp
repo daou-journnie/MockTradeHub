@@ -17,7 +17,7 @@
 <body>
 <div class="flex overflow-hidden flex-col bg-white h-full flex-grow">
     <!-- Include Header -->
-    <jsp:include page="mainHeader.jsp" />
+    <jsp:include page="roomHeader.jsp" />
 
     <hr class="flex shrink-0 self-end max-w-full h-px bg-slate-200 " />
 

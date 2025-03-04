@@ -21,9 +21,9 @@ function fetchRoomList() {
                         <span class="room-info">
                             <span class="room-name">${room.roomName}</span>
                             <span class="room-id">${room.roomCode}</span>
-                            <span class="room-description">${room.roomDescription}</span>
+                            <span class="room-desc">${room.roomDescription}</span>
                             <span class="room-balance">${room.roomMemberBalance}</span>
-                            <span class="room-profit">20%</span>
+                            <span class="room-profit">0.6%</span>
                             <span class="room-button" onclick="enterRoom('${room.roomId}')">들어가기</span>
                         </span>
                         <hr class="entry-divider" />

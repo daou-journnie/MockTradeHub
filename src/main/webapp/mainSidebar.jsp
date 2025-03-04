@@ -47,7 +47,7 @@
         <li class="flex text-zinc-400">
             <a href="#" class="flex items-center gap-5 pl-6 w-full">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/60ba399886b79b584e871694a2f62b0a9b4ebbaa4ef291cbed07ef3ded30a088?placeholderIfAbsent=true&apiKey=74d6b347f88a4ec9b2441d4daff1986f" alt="Mock Investment" class="object-contain shrink-0 self-start aspect-square w-[25px]" />
-            <span>모의 투자</span>
+            <span>내 정보</span>
             </a>
         </li>
     </ul>
