@@ -12,7 +12,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="roomName">TradeRoom 이름</label>
-                    <input type="text" id="roomName" name="roomName" class="form-input" value="daou" />
+                    <input type="text" id="roomName" name="roomName" class="form-input" placeholder="daou" />
                 </div>
                 <div class="form-group">
                     <label for="initialSeed">초기 금액(단위: 만원)</label>
@@ -20,7 +20,7 @@
                             type="text"
                             id="initialSeed"
                             class="form-input"
-                            value="100"
+                            placeholder="100"
                             name="roomInitialSeed"
                     />
                 </div>
@@ -33,7 +33,7 @@
                             type="text"
                             id="description"
                             class="form-input"
-                            value="이 방은 초보만 오세요"
+                            placeholder="이 방은 초보만 오세요"
                             name="roomDescription"
                     />
                 </div>
@@ -43,7 +43,7 @@
                             type="password"
                             id="inviteCode"
                             class="form-input"
-                            value="**********"
+                            placeholder="**********"
                     />
                 </div>
             </div>
@@ -73,7 +73,7 @@
                             type="text"
                             id="maxMembers"
                             class="form-input"
-                            value="5"
+                            placeholder="5"
                             name="roomMaxMembers"
                     />
                 </div>
