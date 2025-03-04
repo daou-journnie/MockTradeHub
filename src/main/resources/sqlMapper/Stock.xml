@@ -9,5 +9,9 @@
         FROM STOCKS
         WHERE STOCK_CODE = #{stockCode}
     </select>
+
+    <select id="getClosingPrice" resultType="Stock">
+        SELECT stock_code, stock_closing_price FROM stocks
+    </select>
   
 </mapper>

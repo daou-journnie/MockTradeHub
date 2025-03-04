@@ -11,6 +11,7 @@ public class Stock {
     private int stockIsActive;
     private int stockSharesOutstanding;
     private Date stockCreatedAt;
+    private int stockClosingPrice;
 
     // Getters and Setters
     public String getStockCode() {
@@ -60,5 +61,13 @@ public class Stock {
     }
     public void setStockCreatedAt(Date stockCreatedAt) {
         this.stockCreatedAt = stockCreatedAt;
+    }
+
+    public int getStockClosingPrice() {
+        return stockClosingPrice;
+    }
+
+    public void setStockClosingPrice(int stockClosingPrice) {
+        this.stockClosingPrice = stockClosingPrice;
     }
 }

@@ -1,6 +1,7 @@
 package org.example.mocktradehub.controller.room;
 
 import okhttp3.*;
+import org.example.mocktradehub.service.StockService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
 
 @WebServlet("/room/stockChart")
@@ -66,9 +68,12 @@ public class RoomStockChartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String roomId = request.getParameter("roomId");
+        StockService stockService = new StockService();
+        Map<String, Integer> stockPrice = stockService.getStockClosingPrice();
 
         request.setAttribute("roomId", roomId);
         request.setAttribute("approvalKey", approvalKey);
+        request.setAttribute("stockPrice", stockPrice);
         RequestDispatcher rd = request.getRequestDispatcher("../roomMockTrade.jsp");
         rd.forward(request, response);
     }

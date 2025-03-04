@@ -24,4 +24,16 @@ public class StockDAO {
         return stockName;
     }
 
+    public List<Stock> getStockClosingPrice(SqlSession session) {
+        List<Stock> stockPriceList = null;
+
+        try {
+            stockPriceList =  session.selectList("StockMapper.getClosingPrice");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return stockPriceList;
+    }
+
 }
