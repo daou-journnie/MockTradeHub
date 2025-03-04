@@ -22,7 +22,8 @@ public class RoomStockDetailController extends HttpServlet {
 
         String stockCode = req.getParameter("stockCode");
         String stockTitle = req.getParameter("stockTitle");
-        String price = req.getParameter("price");
+        String priceText = req.getParameter("priceText");
+        int price = Integer.parseInt(req.getParameter("price"));
         String prdy = req.getParameter("prdy");
         String approvalKey = req.getParameter("approvalKey");
         int roomId = Integer.parseInt(req.getParameter("roomId"));
@@ -46,6 +47,7 @@ public class RoomStockDetailController extends HttpServlet {
         req.setAttribute("stockCode", stockCode);
         req.setAttribute("stockTitle", stockTitle);
         req.setAttribute("price", price);
+        req.setAttribute("priceText", priceText);
         req.setAttribute("prdy", prdy);
         req.setAttribute("approvalKey", approvalKey);
         req.setAttribute("roomId", roomId);

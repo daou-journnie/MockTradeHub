@@ -5,8 +5,9 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
     <script>
-        var approvalKey = "<%= request.getAttribute("approvalKey") %>";
-        var stockCode = "<%= request.getAttribute("stockCode") %>"
+        <%--var approvalKey = "<%= request.getAttribute("approvalKey") %>";--%>
+        var stockCode = "<%= request.getAttribute("stockCode") %>";
+        var highestPrice = <%= (int) request.getAttribute("price")%>;
     </script>
     <script src="../js/websocketDetail.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stockDetail.css">
@@ -14,7 +15,8 @@
 <%
     String stockCode = (String) request.getAttribute("stockCode");
     String stockTitle = (String) request.getAttribute("stockTitle");
-    String price = (String) request.getAttribute("price");
+    int price = (int) request.getAttribute("price");
+    String priceText = (String) request.getAttribute("priceText");
     String prdy = (String) request.getAttribute("prdy");
     int roomId = (int) request.getAttribute("roomId");
     int balance = (int) request.getAttribute("balance");
@@ -28,7 +30,7 @@
     <div id="buy-section">
         <div id="stockInfo">
             <h3><%= stockTitle + "(" + stockCode + ")"%></h3>
-            <span class="price" id=<%= "price-" + stockCode%>><%= price %></span>
+            <span class="price" id=<%= "price-" + stockCode%>><%= priceText %></span>
             <span id=<%= "prdy-" + stockCode%>><%= prdy %></span>
         </div>
         <hr>

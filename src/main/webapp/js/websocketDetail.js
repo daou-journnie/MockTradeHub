@@ -1,12 +1,11 @@
-var highestPrice = 0;
-
 // WebSocket 연결
 var socket = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0");
 
 socket.onopen = function() {
     var requestMessage = JSON.stringify({
             header: {
-                approval_key: approvalKey,
+                // approval_key: approvalKey,
+                approval_key: "9824f828-57e8-458f-b996-48fe5fb04bb8",
                 custtype: "P",
                 tr_type: "1",
                 "content-type": "utf-8"

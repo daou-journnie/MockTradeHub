@@ -138,7 +138,8 @@ socket.onerror = function(error) {
 
 function sendStockDetail(stockCode) {
     const stockTitle = $("#" + stockCode + " .stockTitle").text();
-    const price = document.getElementById(`price-${stockCode}`).innerText.trim();
+    const priceText = document.getElementById(`price-${stockCode}`).innerText.trim();
+    const price = parseInt(priceText.replace(/[^0-9]/g, ''), 10);
     const prdy = document.getElementById(`prdy-${stockCode}`).innerText.trim();
     const vol = document.getElementById(`vol-${stockCode}`).innerText.trim();
 
@@ -159,6 +160,7 @@ function sendStockDetail(stockCode) {
     addHiddenInput("stockCode", stockCode);
     addHiddenInput("stockTitle", stockTitle);
     addHiddenInput("price", price);
+    addHiddenInput("priceText", priceText);
     addHiddenInput("prdy", prdy);
     addHiddenInput("vol", vol);
     addHiddenInput("approvalKey", approvalKey);
