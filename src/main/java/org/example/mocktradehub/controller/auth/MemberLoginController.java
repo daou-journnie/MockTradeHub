@@ -1,5 +1,6 @@
 package org.example.mocktradehub.controller.auth;
 
+import org.example.mocktradehub.model.Member;
 import org.example.mocktradehub.service.MemberService;
 
 import javax.servlet.*;
@@ -22,11 +23,12 @@ public class MemberLoginController extends HttpServlet {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
 
-        boolean isLoggedIn = memberService.login(id, password);
+        Member isLoggedInMember = memberService.login(id, password);
 
-        if(isLoggedIn) {
+        if(isLoggedInMember != null) {
             HttpSession session = request.getSession();
             session.setAttribute("id", id);
+            session.setAttribute("nickname", isLoggedInMember.getMemberNickname());
             response.sendRedirect(request.getContextPath() +"/mainDashboard.jsp");
 
         } else {

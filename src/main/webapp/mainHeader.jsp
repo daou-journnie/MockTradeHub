@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String nickname = (String) session.getAttribute("nickname");
+%>
 <header class="flex flex-wrap gap-5 justify-between px-16 py-0.5 w-full bg-white max-md:px-5 max-md:max-w-full">
-    <div class="flex gap-2.5 my-auto text-2xl font-black whitespace-nowrap text-slate-700">
+    <div class="flex items-center gap-2.5 my-auto text-2xl font-black whitespace-nowrap text-slate-700">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d63245a00b59f9e324876521c8dacd55526a616a0845d613143f797a4c6d0d15?placeholderIfAbsent=true&apiKey=74d6b347f88a4ec9b2441d4daff1986f" alt="BankDash Logo" class="object-contain shrink-0 w-9 aspect-square" />
         <h1 class="basis-auto">MoMo</h1>
+        <div class="p-3 bg-gray-100 rounded-md">
+            <p class="font-semibold text-lg">${nickname}님 환영합니다 </p>
+            <%--        <p class="text-sm text-gray-600">내 정보 보기</p>--%>
+        </div>
     </div>
+
 
     <div class="flex items-center gap-2 text-base text-slate-400">
         <form action="/search" method="get" class="flex items-center gap-2">
