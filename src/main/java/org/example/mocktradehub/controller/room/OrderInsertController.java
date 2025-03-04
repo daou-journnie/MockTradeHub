@@ -42,6 +42,7 @@ public class OrderInsertController extends HttpServlet {
         order.setOrderTotalQuantity(orderTotalQuantity);
         order.setOrderPrice(orderPrice);
         order.setStockCode(stockCode);
+        order.setRoomID(roomId);
         System.out.println("OrderInsertController : " + order.getStockCode());
         String message;
         try {

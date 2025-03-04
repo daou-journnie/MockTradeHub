@@ -72,6 +72,10 @@ public class OrderService {
 
     private String validateOrder(SqlSession session, Order order, String orderType) {
         RoomMemberDAO roomMemberDAO = new RoomMemberDAO();
+        if (order.getOrderPrice() <= 0) {
+            return "수량을 입력하세요";
+        }
+
         int balance = roomMemberDAO.getBalanceByRoomMemberId(session, order.getRoomMemberId());
         int quantityHeld = orderDAO.countTotalQuantity(session, order);
 
@@ -110,7 +114,7 @@ public class OrderService {
         StockDAO stockDAO = new StockDAO();
         String stockName = stockDAO.getStockNameByCode(session, order.getStockCode());
         String orderTypeKorean = orderType.equals("BUY") ? "구매" : "판매";
-        return String.format("%s %d주 %s\n1주당 %s원", stockName, order.getOrderTotalQuantity(), orderTypeKorean, order.getOrderPrice());
+        return String.format("%s %d주 %s\n1주당 %,d원", stockName, order.getOrderTotalQuantity(), orderTypeKorean, order.getOrderPrice());
     }
 
     private int insertPost(SqlSession session, String memberId, Order order, String postContent) {
